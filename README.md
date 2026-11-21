@@ -4,17 +4,19 @@
 > Remplacez tout ce qui est entre crochets et supprimez les lignes en italique avant le rendu.
 > Rendu final sur Moodle : **samedi 28/11, 08h00**, une seule fois par équipe.
 
-*L'organisation des fichiers et le lien entre les six étapes et les notebooks sont décrits dans `ARCHITECTURE.md`.*
+*L'organisation des fichiers et le lien entre les six étapes et les parties du notebook unique sont décrits dans `ARCHITECTURE.md`.*
 
 ## Liens
 
-*Chaque notebook Colab est partagé en lecture : « Partager » → « Tous les utilisateurs disposant du lien » → Lecteur. Vérifiez chaque lien dans une fenêtre de navigation privée : un lien qui ne s'ouvre pas compte comme un livrable manquant.*
+*Choix de l'équipe : tout le code est dans **un seul notebook Colab** (`synora_projet_ml.ipynb`), une partie par étape ; les trois lignes ci-dessous pointent vers ce même notebook. Pour garder ce lien, remplacer le contenu de `lucia.ipynb` dans Drive (clic droit → Gérer les versions → Importer une nouvelle version).*
+
+*Le notebook Colab est partagé en lecture : « Partager » → « Tous les utilisateurs disposant du lien » → Lecteur. Vérifiez chaque lien dans une fenêtre de navigation privée : un lien qui ne s'ouvre pas compte comme un livrable manquant.*
 
 | Livrable | Lien |
 | --- | --- |
-| Notebook Colab 1 · Données (J1, 25/11) | https://colab.research.google.com/drive/1LiB1IPa35JmYHIGbi2EDKlJWYfQkG3AR?usp=sharing |
-| Notebook Colab 2 · Modèles (J2, fin S4) | [lien vers `02_modeles.ipynb`] |
-| Notebook Colab 3 · Évaluation (J3, fin S5) | [lien vers `03_evaluation.ipynb`] |
+| Notebook Colab · parties 1-2, Données (J1, 25/11) | https://colab.research.google.com/drive/1LiB1IPa35JmYHIGbi2EDKlJWYfQkG3AR?usp=sharing |
+| Notebook Colab · parties 3-4, Modèles (J2, fin S4) | https://colab.research.google.com/drive/1LiB1IPa35JmYHIGbi2EDKlJWYfQkG3AR?usp=sharing (même notebook, parties 3 et 4) |
+| Notebook Colab · parties 5-6, Évaluation et export (J3, fin S5) | https://colab.research.google.com/drive/1LiB1IPa35JmYHIGbi2EDKlJWYfQkG3AR?usp=sharing (même notebook, parties 5 et 6) |
 | Application Streamlit déployée | [lien Streamlit Community Cloud] |
 | Dépôt GitHub de l'application (`app.py`, `requirements.txt`, `model.joblib`) | [lien] |
 | Journal IA | `JOURNAL_IA.md` (rendu avec ce fichier) |
@@ -50,7 +52,7 @@
 
 - **Découpage** : 20 % pour le test, `stratify` oui, `random_state` = 42
 
-*Les données ne sont pas rendues : le notebook 1 les charge depuis leur page officielle ou un fichier téléversé.*
+*Les données ne sont pas rendues : le notebook les charge depuis leur page officielle ou un fichier téléversé.*
 
 ## 3. Résultats (J2 et J3)
 
@@ -91,7 +93,7 @@
 ## Avant le rendu
 
 - [ ] Section 1 remplie et validée en S2
-- [ ] Les 3 notebooks s'exécutent de haut en bas sans erreur, sorties enregistrées
+- [ ] Le notebook s'exécute de haut en bas sans erreur, sorties enregistrées
 - [ ] Tous les liens s'ouvrent dans une fenêtre de navigation privée
 - [ ] L'application s'ouvre, refuse les saisies absurdes et rappelle les limites du modèle
 - [ ] Même version de scikit-learn dans `requirements.txt` et dans Colab

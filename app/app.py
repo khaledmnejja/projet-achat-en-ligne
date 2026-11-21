@@ -1,7 +1,7 @@
 """Étape 6 · Déploiement : estimer, pendant une visite, la probabilité d'achat d'une session.
 
 Lancer en local :  streamlit run app.py
-Le fichier model.joblib est produit par le notebook 3 (section 4).
+Le fichier model.joblib est produit par la partie 6 du notebook synora_projet_ml.ipynb.
 """
 from pathlib import Path
 
@@ -49,7 +49,7 @@ LIMITS = (
 
 @st.cache_resource
 def load_bundle():
-    # joblib = pickle : ne charger que le model.joblib produit par NOTRE notebook 3 (livrable imposé),
+    # joblib = pickle : ne charger que le model.joblib produit par NOTRE notebook (partie 6, livrable imposé),
     # jamais un fichier .joblib reçu d'ailleurs, qui pourrait exécuter du code.
     return joblib.load(Path(__file__).parent / "model.joblib")
 

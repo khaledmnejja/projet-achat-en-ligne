@@ -1,20 +1,20 @@
 # Guide de l'équipe Synora · Sujet 18, intentions d'achat
 
-Document de travail interne (non demandé par le cours). Il explique chaque notebook, les étapes à suivre et qui fait quoi.
+Document de travail interne (non demandé par le cours). Il explique chaque partie du notebook unique `notebooks/synora_projet_ml.ipynb`, les étapes à suivre et qui fait quoi.
 Rendu final sur Moodle : **samedi 28/11, 08h00**.
 
 ## L'équipe et les rôles (J1)
 
 | Membre | Rôle | Domaine |
 | --- | --- | --- |
-| Khaled Mnejja | Modélisateur | Choix et entraînement des modèles (notebook 2) |
-| Rayen Hsairi | Analyste données | Exploration et préparation des données (notebook 1) |
-| Omar Idriss | Évaluateur | Mesure sur le test, seuil, erreurs, limites (notebook 3) |
+| Khaled Mnejja | Modélisateur | Choix et entraînement des modèles (parties 3-4) |
+| Rayen Hsairi | Analyste données | Exploration et préparation des données (parties 1-2) |
+| Omar Idriss | Évaluateur | Mesure sur le test, seuil, erreurs, limites (partie 5) |
 | Tawfik Zayen | Documentaliste | README, journal IA, vérification avant chaque dépôt |
 | Omar Zouari | Présentateur | 6 diapositives, préparation de la soutenance |
 
 **Règles du cours :**
-- Chacun **code au moins une partie**. C'est vérifié par l'historique des notebooks et par la question individuelle à la soutenance.
+- Chacun **code au moins une partie**. C'est vérifié par l'historique du notebook et par la question individuelle à la soutenance.
 - Les rôles tournent à chaque jalon. Pensez à mettre à jour la section 5 du README.
 - Chacun doit avoir au moins une ligne dans `JOURNAL_IA.md`.
 
@@ -26,18 +26,18 @@ Rendu final sur Moodle : **samedi 28/11, 08h00**.
 
 | Fichier | Étapes du cours | Jalon | Responsable | État |
 | --- | --- | --- | --- | --- |
-| `notebooks/01_donnees.ipynb` | 1 Collecte, 2 Préparation | J1 · 25/11 | Rayen | ✅ Exécuté · ⏳ textes à rédiger |
-| `notebooks/02_modeles.ipynb` | 3 Modèle, 4 Entraînement | J2 · fin S4 | Khaled | ⏳ À exécuter |
-| `notebooks/03_evaluation.ipynb` | 5 Évaluation | J3 · fin S5 | Omar Idriss | ⏳ À exécuter |
+| `synora_projet_ml.ipynb`, parties 1-2 | 1 Collecte, 2 Préparation | J1 · 25/11 | Rayen | ✅ Exécutées dans Colab, textes rédigés |
+| `synora_projet_ml.ipynb`, parties 3-4 | 3 Modèle, 4 Entraînement | J2 · fin S4 | Khaled | ✅ Testées en local · ⏳ Colab, textes 4.2 et bilan |
+| `synora_projet_ml.ipynb`, parties 5-6.1 | 5 Évaluation, export | J3 · fin S5 | Omar Idriss | ✅ Testées en local · ⏳ Colab, limites et bilan |
 | `app/` (Streamlit) | 6 Déploiement | J3 · fin S5 | Khaled, avec Omar Idriss | ⏳ À déployer |
 | `README.md`, `JOURNAL_IA.md` | Tous | Tous | Tawfik | ⏳ En cours |
 | `presentation/` (6 diapositives, PDF) | Tous | Rendu final | Omar Zouari | ⏳ À faire |
 
-**Règle d'or partagée par les 3 notebooks.** La cellule `CONFIG` est identique partout : graine 42, 20 % de test, mêmes colonnes. Ne la modifiez jamais dans un seul notebook. Un contrôle (`EXPECTED_SPLIT`) arrête le notebook si le découpage diffère.
+**Un seul notebook, une seule configuration.** Tout le code est dans `synora_projet_ml.ipynb` (choix de l'équipe) : une cellule `CONFIG` unique (graine 42, 20 % de test, colonnes), un découpage unique contrôlé par `EXPECTED_SPLIT`, et la partie 5 reprend automatiquement les réglages de la partie 4 (`BEST = best`) : plus rien à recopier à la main. Le même lien Colab sert pour les trois jalons du README.
 
 ---
 
-## Notebook 1 · Données (J1, 25/11) · responsable : Rayen
+## Parties 1-2 · Données (J1, 25/11) · responsable : Rayen
 
 **But :** charger les données, vérifier leur qualité, les comprendre, puis les préparer pour les modèles.
 
@@ -66,28 +66,26 @@ Rendu final sur Moodle : **samedi 28/11, 08h00**.
 - Pourquoi l'exactitude est trompeuse ici.
 
 **Étapes restantes :**
-1. **Rayen :** coller les constats 1.6 et le bilan J1 relus dans Colab, puis **Fichier → Enregistrer**.
-2. **Rayen :** vérifier que le lien de partage s'ouvre dans une fenêtre privée (il est déjà dans le README).
-3. **Tawfik :** télécharger le `.ipynb` final et remplacer `notebooks/01_donnees.ipynb`.
+1. ✅ Parties exécutées dans Colab, constats et bilan rédigés.
+2. **Rayen :** relire les constats 1.6 et le bilan J1, et savoir les expliquer à l'oral.
 
 ---
 
-## Notebook 2 · Modèles (J2, fin S4) · responsable : Khaled
+## Parties 3-4 · Modèles (J2, fin S4) · responsable : Khaled
 
 **But :** comparer plusieurs algorithmes et garder le meilleur, **sans jamais toucher au test**.
 
 | Section | Ce qu'elle fait |
 | --- | --- |
-| 0 Mise en place | Mêmes `CONFIG` et découpage que le notebook 1 |
-| 1 Modèle | 4 candidats : référence naïve, régression logistique, forêt aléatoire, gradient boosting, tous avec `class_weight="balanced"` |
-| 2.1 Validation croisée | Chaque modèle est entraîné 5 fois sur 4/5 des données et testé sur le 1/5 restant, **avec et sans `PageValues`** : 8 résultats (F1, rappel, précision, AUC, sous forme moyenne ± écart-type), plus un graphique |
-| 2.1 bis Meilleur seuil | Compare chaque modèle à son meilleur seuil (validation croisée sur l'entraînement) : au seuil 0,5, la forêt aléatoire paraît mauvaise (F1 0,14) alors qu'elle est au niveau des autres (0,41) |
-| 2.2 Lecture | **À rédiger** : écart avec / sans `PageValues`, ce qu'il dit de la fuite, meilleur modèle par variante |
-| 2.3 `GridSearchCV` | Règle le meilleur modèle (au meilleur seuil) de chaque variante, noté en précision moyenne |
-| 2.4 Configuration | Affiche `BEST = {...}`, **à recopier dans le notebook 3** |
+| 3 Modèle | 4 candidats : référence naïve, régression logistique, forêt aléatoire, gradient boosting, tous avec `class_weight="balanced"` |
+| 4.1 Validation croisée | Chaque modèle est entraîné 5 fois sur 4/5 des données et testé sur le 1/5 restant, **avec et sans `PageValues`** : 8 résultats (F1, rappel, précision, AUC, sous forme moyenne ± écart-type), plus un graphique |
+| 4.1 bis Meilleur seuil | Compare chaque modèle à son meilleur seuil (validation croisée sur l'entraînement) : au seuil 0,5, la forêt aléatoire paraît mauvaise (F1 0,14) alors qu'elle est au niveau des autres (0,41) |
+| 4.2 Lecture | **À rédiger** : écart avec / sans `PageValues`, ce qu'il dit de la fuite, meilleur modèle par variante |
+| 4.3 `GridSearchCV` | Règle le meilleur modèle (au meilleur seuil) de chaque variante, noté en précision moyenne |
+| 4.4 Configuration | Affiche `best`, repris **automatiquement** en partie 5 |
 | Bilan J2 | **À rédiger** : modèle retenu, hyperparamètres |
 
-**Ce qu'on attend :** un F1 d'environ 0,4 sans `PageValues` et d'environ 0,65 à 0,7 avec. Cet écart est le résultat central du sujet.
+**Essai en local :** F1 au meilleur seuil d'environ 0,42 sans `PageValues` et 0,69 avec. Cet écart est le résultat central du sujet.
 
 **Idées à savoir expliquer :**
 - La validation croisée, et pourquoi on donne un écart-type.
@@ -95,25 +93,24 @@ Rendu final sur Moodle : **samedi 28/11, 08h00**.
 - Pourquoi on compare au modèle naïf.
 
 **Étapes :**
-1. **Khaled :** importer `02_modeles.ipynb` dans Colab, **Exécution → Tout exécuter** (5 à 10 min), enregistrer.
-2. **Khaled :** rédiger 2.2 et le bilan J2.
+1. **Khaled :** mettre `synora_projet_ml.ipynb` dans Colab (à la place de `lucia.ipynb` pour garder le lien), **Exécution → Tout exécuter** (environ 15 min), enregistrer.
+2. **Khaled :** rédiger 4.2 et le bilan J2.
 3. **Tawfik :** reporter les scores dans la section 3 du README (une ligne par modèle et par variante), puis télécharger le `.ipynb`.
-4. **Khaled :** partager le lien Colab, que Tawfik ajoute au README.
 
 ---
 
-## Notebook 3 · Évaluation (J3, fin S5) · responsable : Omar Idriss
+## Partie 5 et export (6.1) · Évaluation (J3, fin S5) · responsable : Omar Idriss
 
 **But :** mesurer **une seule fois**, honnêtement, le modèle final sur le test, comprendre ses erreurs, puis l'exporter pour l'application.
 
 | Section | Ce qu'elle fait |
 | --- | --- |
-| Configuration J2 | ⚠️ **Remplacer `BEST`** par la sortie du notebook 2 : les valeurs actuelles ne sont pas les nôtres (journal, E2) |
-| 1 Choix du seuil | Cherche, en validation croisée sur l'entraînement, le seuil de probabilité qui maximise le F1 (pas forcément 50 %), avec une courbe précision-rappel |
-| 2 Évaluation unique | Mesure sur le test : matrice de confusion, F1, rappel, AUC, courbes ROC |
-| 3 Erreurs | Rappel par type de visiteur et par mois : quels acheteurs le modèle rate-t-il ? |
-| Limites | **À rédiger**, puis à reporter dans la section 4 du README |
-| 4 Export | Crée `model.joblib` et `requirements.txt` avec les versions exactes de Colab, puis les télécharge |
+| 5.0 Configuration | `BEST = best` : réglages repris de la partie 4 (corrige E2 : plus de valeurs écrites à l'avance) |
+| 5.1 Choix du seuil | Cherche, en validation croisée sur l'entraînement, le seuil de probabilité qui maximise le F1 (pas forcément 50 %), avec une courbe précision-rappel |
+| 5.2 Évaluation unique | Mesure sur le test : matrice de confusion, F1, rappel, AUC, courbes ROC |
+| 5.3 Erreurs | Rappel par type de visiteur et par mois : quels acheteurs le modèle rate-t-il ? |
+| 5.4 Limites | **À rédiger**, puis à reporter dans la section 4 du README |
+| 6.1 Export | Crée `model.joblib` et `requirements.txt` avec les versions exactes de Colab, puis les télécharge |
 | Bilan J3 | **À rédiger** |
 
 **Idées à savoir expliquer :**
@@ -123,8 +120,8 @@ Rendu final sur Moodle : **samedi 28/11, 08h00**.
 - Pourquoi on déploie la version **sans** `PageValues`.
 
 **Étapes :**
-1. **Omar Idriss :** importer le notebook dans Colab et **coller le `BEST` du notebook 2** dans la cellule prévue.
-2. **Omar Idriss :** tout exécuter, enregistrer, rédiger les limites et le bilan J3.
+1. **Omar Idriss :** après l'exécution complète dans Colab, lire les résultats de la partie 5.
+2. **Omar Idriss :** rédiger les limites (5.4) et le bilan J3, enregistrer.
 3. **Omar Idriss :** récupérer `model.joblib` et `requirements.txt` (téléchargés automatiquement).
 4. **Tawfik :** remplir les sections 3 (modèle retenu, seuil) et 4 (limites) du README, puis compléter les fiches E1 et E2 du journal.
 
@@ -140,7 +137,7 @@ Rendu final sur Moodle : **samedi 28/11, 08h00**.
 - Il affiche la probabilité, le seuil et un rappel des limites.
 
 **Étapes :**
-1. **Khaled :** remplacer `app/model.joblib` **et** `app/requirements.txt` par ceux du notebook 3 (corrige E1).
+1. **Khaled :** remplacer `app/model.joblib` **et** `app/requirements.txt` par ceux produits en partie 6.1 (corrige E1).
 2. **Omar Idriss :** réécrire le texte `LIMITS` dans `app.py` avec les vrais chiffres du test (corrige E2).
 3. **Khaled :** créer un dépôt GitHub public contenant `app.py`, `requirements.txt` et `model.joblib`.
 4. **Khaled :** sur **share.streamlit.io**, cliquer sur New app, choisir le dépôt et le fichier `app.py`, puis Deploy.
@@ -177,7 +174,7 @@ Rendu final sur Moodle : **samedi 28/11, 08h00**.
 
 | Date | Objectif |
 | --- | --- |
-| Avant le 25/11 | Notebook 1 finalisé et partagé (J1) |
-| Fin S4 | Notebook 2 exécuté et rédigé (J2) |
-| Fin S5 | Notebook 3, application déployée (J3) |
+| Avant le 25/11 | Parties 1-2 finalisées et partagées (J1) |
+| Fin S4 | Parties 3-4 exécutées et rédigées (J2) |
+| Fin S5 | Parties 5-6, application déployée (J3) |
 | Avant le 28/11, 08h00 | README, journal, présentation, checklist cochée, **un seul** dépôt sur Moodle |
