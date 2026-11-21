@@ -22,7 +22,7 @@ Le journal IA prouve que l'équipe sait ce qu'elle a demandé à l'IA, ce qu'ell
 | Sujet (n° et titre) | 18 · Intentions d'achat sur un site marchand |
 | Membres | Khaled Mnejja (modélisateur), Omar Zouari (présentateur), Omar Idriss (évaluateur), Tawfik Zayen (documentaliste), Rayen Hsairi (analyste données) |
 | Outils IA utilisés (nom et version si connue) | Claude Code (modèle Claude Opus 5.5) |
-| Liens des notebooks Colab | [à compléter : lien du notebook 1 complet] |
+| Liens des notebooks Colab | Notebook 1 : https://colab.research.google.com/drive/1LiB1IPa35JmYHIGbi2EDKlJWYfQkG3AR?usp=sharing |
 
 ## 2. Journal
 
@@ -41,7 +41,8 @@ Une ligne par usage. Le prompt peut être résumé ; s'il est long, mettez le te
 | 9 | 21/11 | Rayen Hsairi | J1 Données (étapes 1-2) | Claude (Claude Code) | « Ajoute au notebook 1 les cellules d'amélioration proposées dans la critique » | Sections 1.2 bis (profil des doublons), 1.2 ter (histogrammes log des durées, durées nulles), 1.5 bis (boîtes à moustaches acheteurs / non-acheteurs, corrélation de Spearman), 1.5 ter (`SpecialDay`, codes rares) ; justification du retrait des doublons en 2.1 | Copie du notebook exécutée de haut en bas sans erreur ; découpage inchangé (9 764 / 2 441) ; chiffres identiques à ceux de la critique (ligne 8) | Aucune ; le notebook doit être réimporté et réexécuté dans Colab pour que les sorties soient les nôtres |
 | 10 | 21/11 | Tawfik Zayen | J1 Données | Claude (Claude Code) | « Vérifie le lien Colab du projet » | Constat : le lien est bien public, mais il ouvre un notebook de 2 cellules (chargement des données et `df.head()`), pas notre `01_donnees.ipynb` ; lien retiré du README et du journal en attendant le bon | Notebook téléchargé sans compte Google (comme un correcteur), cellules et sorties relues | Le lien avait été reporté dans le README (ligne du journal non numérotée, 21/11) sans en vérifier le contenu : corrigé |
 | 11 | 21/11 | Rayen Hsairi | J1 Données (étapes 1-2) | Claude (Claude Code) | « Fais toi-même les étapes Colab du notebook 1 » | Textes des cases 1.6 Constats et Bilan J1 rédigés dans le notebook à partir des sorties (doublons, durées, `PageValues`, profil des acheteurs, mois, codes rares) | Chaque chiffre repris des sorties de notre exécution du notebook ; [à faire : relecture et reformulation par Rayen, exécution dans Colab] | Aucune ; l'import dans Colab par Claude a échoué (navigateur non connecté), à faire par l'équipe |
-| 12 | | | | | | | | |
+| 12 | 21/11 | Tawfik Zayen | J1 Données | Claude (Claude Code) | « Vérifie le nouveau lien Colab du notebook 1 » | Lien vérifié puis reporté dans le README et le journal ; version exécutée dans Colab enregistrée dans `notebooks/01_donnees.ipynb` | Notebook téléchargé sans compte Google : 35 cellules, 18 cases exécutées dans l'ordre (1 à 18), 0 erreur, 5 graphiques ; chiffres de contrôle identiques (125 doublons, 12 205 lignes, 9 764 / 2 441, 72 / 73 colonnes) | Aucune |
+| 13 | | | | | | | | |
 
 Supprimez les deux lignes d'exemple avant le rendu.
 
