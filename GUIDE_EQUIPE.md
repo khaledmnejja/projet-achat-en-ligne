@@ -46,9 +46,13 @@ Rendu final sur Moodle : **samedi 28/11, 08h00**.
 | 0 Mise en place | Imports, `CONFIG`, fonctions communes | Colab : scikit-learn 1.6.1 |
 | 1.1 Premier contact | Charge le CSV officiel de l'UCI | 12 330 lignes × 18 colonnes |
 | 1.2 Qualité | Valeurs manquantes, doublons, statistiques | 0 manquante, 125 doublons |
+| 1.2 bis Doublons | Profil des lignes en double | 201 lignes, toutes des rebonds sans achat : sans doute de vraies visites |
+| 1.2 ter Valeurs aberrantes | Histogrammes log des durées, durées nulles | 867 sessions > 1 h, maximum 17,8 h ; 717 sessions avec des pages produits mais une durée nulle (limite de Google Analytics) |
 | 1.3 La cible | Répartition achat / non-achat | 15,5 % d'achats : déséquilibre |
 | 1.4 Catégories | Mois et types de visiteurs | Pas de janvier ni d'avril ; « June » mal écrit |
 | 1.5 `PageValues` | Taux d'achat avec ou sans valeur de page | 56 % contre 4 % : variable suspecte |
+| 1.5 bis Acheteurs | Boîtes à moustaches et corrélation de Spearman | Les acheteurs sortent moins vite (`ExitRates` −0,25) et voient 2 fois plus de pages produits ; `PageValues` 0,63 |
+| 1.5 ter À surveiller | `SpecialDay` et codes rares | `SpecialDay` seulement en février et mai ; 12 codes avec moins de 30 sessions |
 | 1.6 Constats | **À rédiger** | Brouillon disponible (voir le journal, ligne 4) |
 | 2.1 Nettoyage | Corrige « June », retire les doublons | 12 205 lignes |
 | 2.2 Découpage | 80 % entraînement / 20 % test, stratifié | 9 764 / 2 441 |
