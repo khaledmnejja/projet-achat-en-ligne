@@ -20,7 +20,7 @@ Le journal IA prouve que l'équipe sait ce qu'elle a demandé à l'IA, ce qu'ell
 | Groupe | G1 / G2 |
 | Nom de l'équipe | Synora |
 | Sujet (n° et titre) | 18 · Intentions d'achat sur un site marchand |
-| Membres | |
+| Membres | Khaled Mnejja (modélisateur), Omar Zouari (présentateur), Omar Idriss (évaluateur), Tawfik Zayen (documentaliste), Rayen Hsairi (analyste données) |
 | Outils IA utilisés (nom et version si connue) | Claude Code (modèle Claude Opus 5.5) |
 | Liens des notebooks Colab | Notebook 1 : https://colab.research.google.com/drive/1OPd_DrC-IURm28-9gOgNj-6STZHQQq45?usp=sharing |
 

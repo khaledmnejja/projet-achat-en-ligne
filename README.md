@@ -82,10 +82,11 @@
 
 | Membre | Cadrage | J1 Données | J2 Modèles | J3 Évaluation et application |
 | --- | --- | --- | --- | --- |
-| [Nom] | [rôle] | [rôle] | [rôle] | [rôle] |
-| | | | | |
-| | | | | |
-| | | | | |
+| Khaled Mnejja | [rôle] | Modélisateur | [rôle] | [rôle] |
+| Omar Zouari | [rôle] | Présentateur | [rôle] | [rôle] |
+| Omar Idriss | [rôle] | Évaluateur | [rôle] | [rôle] |
+| Tawfik Zayen | [rôle] | Documentaliste | [rôle] | [rôle] |
+| Rayen Hsairi | [rôle] | Analyste données | [rôle] | [rôle] |
 
 ## Avant le rendu
 
