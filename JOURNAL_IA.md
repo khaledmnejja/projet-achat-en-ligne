@@ -22,7 +22,7 @@ Le journal IA prouve que l'équipe sait ce qu'elle a demandé à l'IA, ce qu'ell
 | Sujet (n° et titre) | 18 · Intentions d'achat sur un site marchand |
 | Membres | Khaled Mnejja (modélisateur), Omar Zouari (présentateur), Omar Idriss (évaluateur), Tawfik Zayen (documentaliste), Rayen Hsairi (analyste données) |
 | Outils IA utilisés (nom et version si connue) | Claude Code (modèle Claude Opus 5.5) |
-| Liens des notebooks Colab | Notebook 1 : https://colab.research.google.com/drive/1OPd_DrC-IURm28-9gOgNj-6STZHQQq45?usp=sharing |
+| Liens des notebooks Colab | [à compléter : lien du notebook 1 complet] |
 
 ## 2. Journal
 
@@ -39,7 +39,8 @@ Une ligne par usage. Le prompt peut être résumé ; s'il est long, mettez le te
 | 7 | 21/11 | Tawfik Zayen | Organisation | Claude (Claude Code) | « Donne-nous tous les notebooks avec leurs explications, les étapes et le rôle de chaque membre » | `GUIDE_EQUIPE.md` : explication de chaque notebook et de l'application, étapes restantes, répartition des tâches par rôle, calendrier | Contenu comparé au code des 3 notebooks et aux sorties de notre notebook 1 ; répartition relue en équipe [à faire] | Aucune ; les scores attendus du notebook 2 (F1 ≈ 0,4 / 0,65-0,7) sont des estimations à confirmer par notre exécution |
 | 8 | 21/11 | Rayen Hsairi | J1 Données | Claude (Claude Code) | « Relis et critique le notebook 1 : est-il bien fait ? » | Critique : points forts (pas de fuite, pipeline) et manques (aucun graphique des valeurs aberrantes, doublons qui sont de vrais rebonds, durées nulles pour une page vue, modalités rares, `SpecialDay` limité à février et mai) | Chaque constat recalculé sur le CSV officiel (201 lignes en double, toutes des rebonds sans achat ; 717 sessions avec des pages produits mais une durée nulle) | La décision de retirer les doublons, prise dans la structure générée (ligne 3), est discutable : ce sont probablement de vraies visites distinctes. Décision gardée, mais à justifier dans le notebook |
 | 9 | 21/11 | Rayen Hsairi | J1 Données (étapes 1-2) | Claude (Claude Code) | « Ajoute au notebook 1 les cellules d'amélioration proposées dans la critique » | Sections 1.2 bis (profil des doublons), 1.2 ter (histogrammes log des durées, durées nulles), 1.5 bis (boîtes à moustaches acheteurs / non-acheteurs, corrélation de Spearman), 1.5 ter (`SpecialDay`, codes rares) ; justification du retrait des doublons en 2.1 | Copie du notebook exécutée de haut en bas sans erreur ; découpage inchangé (9 764 / 2 441) ; chiffres identiques à ceux de la critique (ligne 8) | Aucune ; le notebook doit être réimporté et réexécuté dans Colab pour que les sorties soient les nôtres |
-| 10 | | | | | | | | |
+| 10 | 21/11 | Tawfik Zayen | J1 Données | Claude (Claude Code) | « Vérifie le lien Colab du projet » | Constat : le lien est bien public, mais il ouvre un notebook de 2 cellules (chargement des données et `df.head()`), pas notre `01_donnees.ipynb` ; lien retiré du README et du journal en attendant le bon | Notebook téléchargé sans compte Google (comme un correcteur), cellules et sorties relues | Le lien avait été reporté dans le README (ligne du journal non numérotée, 21/11) sans en vérifier le contenu : corrigé |
+| 11 | | | | | | | | |
 
 Supprimez les deux lignes d'exemple avant le rendu.
 

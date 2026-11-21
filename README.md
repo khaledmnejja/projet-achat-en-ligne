@@ -12,7 +12,7 @@
 
 | Livrable | Lien |
 | --- | --- |
-| Notebook Colab 1 · Données (J1, 25/11) | https://colab.research.google.com/drive/1OPd_DrC-IURm28-9gOgNj-6STZHQQq45?usp=sharing |
+| Notebook Colab 1 · Données (J1, 25/11) | [lien vers `01_donnees.ipynb` : à mettre à jour, le lien actuel du projet ne contient pas ce notebook] |
 | Notebook Colab 2 · Modèles (J2, fin S4) | [lien vers `02_modeles.ipynb`] |
 | Notebook Colab 3 · Évaluation (J3, fin S5) | [lien vers `03_evaluation.ipynb`] |
 | Application Streamlit déployée | [lien Streamlit Community Cloud] |
