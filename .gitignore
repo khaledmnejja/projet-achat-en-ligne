@@ -1,0 +1,14 @@
+# Données : jamais poussées (le notebook 1 les charge depuis la page officielle UCI)
+data/
+*.csv
+*.zip
+
+# Python / Jupyter
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# Streamlit
+.streamlit/secrets.toml
