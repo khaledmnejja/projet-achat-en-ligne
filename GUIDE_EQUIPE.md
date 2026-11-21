@@ -81,8 +81,9 @@ Rendu final sur Moodle : **samedi 28/11, 08h00**.
 | 0 Mise en place | Mêmes `CONFIG` et découpage que le notebook 1 |
 | 1 Modèle | 4 candidats : référence naïve, régression logistique, forêt aléatoire, gradient boosting, tous avec `class_weight="balanced"` |
 | 2.1 Validation croisée | Chaque modèle est entraîné 5 fois sur 4/5 des données et testé sur le 1/5 restant, **avec et sans `PageValues`** : 8 résultats (F1, rappel, précision, AUC, sous forme moyenne ± écart-type), plus un graphique |
+| 2.1 bis Meilleur seuil | Compare chaque modèle à son meilleur seuil (validation croisée sur l'entraînement) : au seuil 0,5, la forêt aléatoire paraît mauvaise (F1 0,14) alors qu'elle est au niveau des autres (0,41) |
 | 2.2 Lecture | **À rédiger** : écart avec / sans `PageValues`, ce qu'il dit de la fuite, meilleur modèle par variante |
-| 2.3 `GridSearchCV` | Essaie plusieurs réglages du meilleur modèle de chaque variante |
+| 2.3 `GridSearchCV` | Règle le meilleur modèle (au meilleur seuil) de chaque variante, noté en précision moyenne |
 | 2.4 Configuration | Affiche `BEST = {...}`, **à recopier dans le notebook 3** |
 | Bilan J2 | **À rédiger** : modèle retenu, hyperparamètres |
 
