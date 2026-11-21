@@ -32,8 +32,9 @@ Une ligne par usage. Le prompt peut être résumé ; s'il est long, mettez le te
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1 | 20/11 | Exemple : Amira | J1 Données | Assistant de code Colab | « Écris un pipeline qui encode les colonnes catégorielles et normalise les numériques » | Structure du `ColumnTransformer` | Exécuté sur le train, dimensions vérifiées | Le `fit` était fait sur tout le jeu avant le découpage (fuite) : découpage déplacé avant le pipeline (voir E1) |
 | 2 | 22/11 | Exemple : Youssef | J1 Données | Chatbot | « Explique la différence entre OneHotEncoder et OrdinalEncoder » | Explication reformulée dans le notebook | Comparée au support de S2 | Aucune |
-| 3 | 21/11 | [Nom] | Cadrage | Claude (Claude Code) | « À partir du schéma des six étapes, génère une structure de projet conforme et fiable » | Arborescence, `ARCHITECTURE.md`, squelettes des 3 notebooks et de `app.py` | Notebooks exécutés de haut en bas, découpage et dimensions vérifiés | [À compléter après relecture en équipe] |
-| 4 | | | | | | | | |
+| 3 | 21/11 | [Nom] | Cadrage | Claude (Claude Code) | « À partir du schéma des six étapes, génère une structure de projet conforme et fiable » | Arborescence, `ARCHITECTURE.md`, squelettes des 3 notebooks et de `app.py` | Notebook 1 exécuté de haut en bas dans Colab, découpage (9 764 / 2 441) et dimensions vérifiés ; notebooks 2 et 3 pas encore vérifiés | [À compléter après relecture en équipe] |
+| 4 | 21/11 | [Nom] | J1 Données | Claude (Claude Code) | « Aide-nous à exécuter le notebook 1 et à rédiger les constats et le bilan J1 » | Brouillon des constats 1.6 et du bilan J1, chiffres sur les durées extrêmes, phrase de la section 2 du README | Chiffres recalculés et comparés aux sorties de notre exécution Colab (identiques) ; textes relus et reformulés en équipe | [À compléter : ce que l'équipe a modifié dans le brouillon] |
+| 5 | | | | | | | | |
 
 Supprimez les deux lignes d'exemple avant le rendu.
 

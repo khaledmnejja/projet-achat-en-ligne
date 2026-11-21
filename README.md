@@ -38,7 +38,7 @@
 
 - **Source** : Online Shoppers Purchasing Intention Dataset, UCI Machine Learning Repository, https://archive.ics.uci.edu/dataset/468/online+shoppers+purchasing+intention+dataset, licence CC BY 4.0
 - **Taille** : 12 330 lignes × 18 colonnes ; cible : `Revenue`
-- **Qualité** : aucune valeur manquante ; 125 lignes en double retirées avant le découpage ; mois `June` renommé `Jun` pour être cohérent avec les autres ; janvier et avril absents. [Compléter : valeurs aberrantes repérées sur les durées]
+- **Qualité** : aucune valeur manquante ; 125 lignes en double retirées avant le découpage ; mois `June` renommé `Jun` pour être cohérent avec les autres ; janvier et avril absents. Durées très étirées : médiane ≈ 10 min sur les pages produits, mais 867 sessions de plus d'1 h et un maximum ≈ 18 h (onglet probablement resté ouvert), conservées ; 6 sessions sans aucune page vue.
 - **Préparation** (Pipeline ajusté sur l'entraînement seulement) :
 
 | Colonnes | Traitement | Pourquoi |
