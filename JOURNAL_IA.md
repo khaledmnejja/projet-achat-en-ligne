@@ -21,8 +21,8 @@ Le journal IA prouve que l'équipe sait ce qu'elle a demandé à l'IA, ce qu'ell
 | Nom de l'équipe | Synora |
 | Sujet (n° et titre) | 18 · Intentions d'achat sur un site marchand |
 | Membres | |
-| Outils IA utilisés (nom et version si connue) | |
-| Liens des notebooks Colab | |
+| Outils IA utilisés (nom et version si connue) | Claude Code (modèle Claude Opus 5.5) |
+| Liens des notebooks Colab | Notebook 1 : https://colab.research.google.com/drive/1OPd_DrC-IURm28-9gOgNj-6STZHQQq45?usp=sharing |
 
 ## 2. Journal
 
@@ -32,9 +32,11 @@ Une ligne par usage. Le prompt peut être résumé ; s'il est long, mettez le te
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1 | 20/11 | Exemple : Amira | J1 Données | Assistant de code Colab | « Écris un pipeline qui encode les colonnes catégorielles et normalise les numériques » | Structure du `ColumnTransformer` | Exécuté sur le train, dimensions vérifiées | Le `fit` était fait sur tout le jeu avant le découpage (fuite) : découpage déplacé avant le pipeline (voir E1) |
 | 2 | 22/11 | Exemple : Youssef | J1 Données | Chatbot | « Explique la différence entre OneHotEncoder et OrdinalEncoder » | Explication reformulée dans le notebook | Comparée au support de S2 | Aucune |
-| 3 | 21/11 | [Nom] | Cadrage | Claude (Claude Code) | « À partir du schéma des six étapes, génère une structure de projet conforme et fiable » | Arborescence, `ARCHITECTURE.md`, squelettes des 3 notebooks et de `app.py` | Notebook 1 exécuté de haut en bas dans Colab, découpage (9 764 / 2 441) et dimensions vérifiés ; notebooks 2 et 3 pas encore vérifiés | [À compléter après relecture en équipe] |
+| 3 | 21/11 | [Nom] | Cadrage | Claude (Claude Code) | « À partir du schéma des six étapes, génère une structure de projet conforme et fiable » | Arborescence, `ARCHITECTURE.md`, squelettes des 3 notebooks et de `app.py` | Notebook 1 exécuté de haut en bas dans Colab, découpage (9 764 / 2 441) et dimensions vérifiés ; notebooks 2 et 3 pas encore vérifiés | Fichiers et chiffres fournis sans provenir de notre exécution (voir E1 et E2) ; à corriger en J2 et J3 |
 | 4 | 21/11 | [Nom] | J1 Données | Claude (Claude Code) | « Aide-nous à exécuter le notebook 1 et à rédiger les constats et le bilan J1 » | Brouillon des constats 1.6 et du bilan J1, chiffres sur les durées extrêmes, phrase de la section 2 du README | Chiffres recalculés et comparés aux sorties de notre exécution Colab (identiques) ; textes relus et reformulés en équipe | [À compléter : ce que l'équipe a modifié dans le brouillon] |
-| 5 | | | | | | | | |
+| 5 | 21/11 | [Nom] | Cadrage | Claude (Claude Code) | « Reprends le dépôt de notre coéquipier comme un nouveau projet pour l'équipe Synora, sans confusion avec un autre projet » | Copie des fichiers sans l'historique git, nom de l'équipe dans le README et le journal, `CLAUDE.md` qui délimite le projet, `.gitignore` (supports de cours exclus) | Liste des fichiers et historique git relus ; contenu comparé au dépôt GitHub d'origine et aux modèles du cours (`template_README.md`, `template_JOURNAL_IA.md`) | Aucune |
+| 6 | 21/11 | [Nom] | Cadrage | Claude (Claude Code) | « Donne-nous tout ce que tu sais du projet, avec des critiques », puis « vérifie le projet par rapport à l'énoncé » | Liste des limites à discuter (écart avec / sans `PageValues`, découpage aléatoire et non temporel, modèles comparés au seuil 0,5, durées extrêmes, usage de `Region` et `VisitorType`) ; tableau de conformité à l'énoncé | Relecture du code des notebooks 2 et 3 ; versions lues dans `app/model.joblib` sans le charger ; versions de Colab lues dans la sortie de notre notebook 1 | Deux erreurs repérées dans la structure générée en ligne 3 (E1, E2) |
+| 7 | | | | | | | | |
 
 Supprimez les deux lignes d'exemple avant le rendu.
 
@@ -42,16 +44,27 @@ Supprimez les deux lignes d'exemple avant le rendu.
 
 Une fiche par erreur importante (au moins une). Numérotez-les E1, E2… et renvoyez-y depuis le tableau du journal.
 
-### E1 — [titre court de l'erreur]
+### E1 — Modèle et `requirements.txt` incompatibles avec notre Colab
 
 | Rubrique | À remplir |
 | --- | --- |
-| Ligne du journal | N° |
-| Ce que l'IA a proposé | Extrait de code ou de texte |
-| Pourquoi c'est faux | Explication avec le vocabulaire du cours (fuite de données, évaluation sur le train, mauvaise métrique, mauvais encodage…) |
-| Comment vous l'avez repéré | Score trop beau, erreur à l'exécution, comparaison avec le cours, relecture… |
-| Correction apportée | Extrait du code corrigé |
-| Effet mesuré | Résultat avant et après (score, dimensions, graphique) |
+| Ligne du journal | 3 (repérée en ligne 6) |
+| Ce que l'IA a proposé | Un `app/model.joblib` déjà fourni et un `requirements.txt` avec `scikit-learn==1.9.1`, `pandas==3.1.1`, `numpy==2.4.6` |
+| Pourquoi c'est faux | Le modèle n'a pas été produit par notre notebook 3 : ce n'est pas notre modèle, et ses scores ne correspondent pas à notre exécution. Notre Colab utilise `scikit-learn 1.6.1` et `pandas 2.2.3` (sortie de la cellule d'imports du notebook 1). Un modèle enregistré avec scikit-learn 1.9.1 risque de ne pas se charger, ou de mal se comporter, avec une autre version : c'est la règle 8 d'`ARCHITECTURE.md` (« mêmes versions en Colab et en production »). |
+| Comment vous l'avez repéré | Relecture : versions de la cellule d'imports dans Colab comparées à `requirements.txt` ; chaînes `1.9.1` et `3.1.1` lues dans `model.joblib` sans le charger |
+| Correction apportée | [À faire en J3] Exécuter notre notebook 3 dans Colab ; remplacer `app/model.joblib` **et** `app/requirements.txt` par les deux fichiers qu'il télécharge (la section 4 écrit les versions exactes de Colab) |
+| Effet mesuré | [À compléter en J3] Versions avant : 1.9.1 / 3.1.1 ; après : celles de notre Colab ; l'application se charge sans erreur sur Streamlit Cloud (oui / non) |
+
+### E2 — Résultats et texte de limites écrits à l'avance
+
+| Rubrique | À remplir |
+| --- | --- |
+| Ligne du journal | 3 (repérée en ligne 6) |
+| Ce que l'IA a proposé | Dans le notebook 3, une cellule `BEST` déjà remplie (`Gradient_boosting` sans `PageValues`, F1 CV = 0,431 ; `Foret_aleatoire` avec `PageValues`, F1 CV = 0,685) ; dans `app.py`, un texte fixe « Il détecte environ 7 acheteurs sur 10, mais une alerte sur trois seulement correspond à un vrai achat » |
+| Pourquoi c'est faux | Ces chiffres n'ont pas été obtenus par notre notebook 2 ni sur notre test. Les reprendre reviendrait à rendre des résultats non vérifiés, et à montrer aux utilisateurs de l'application des limites qui ne décrivent peut-être pas notre modèle. |
+| Comment vous l'avez repéré | Relecture du notebook 3 et de `app.py` avant leur exécution (notebook 2 pas encore exécuté) |
+| Correction apportée | [À faire en J2 et J3] Remplacer `BEST` par la sortie de la cellule 2.4 de notre notebook 2 ; réécrire `LIMITS` dans `app.py` avec le rappel et la précision de notre test |
+| Effet mesuré | [À compléter] Valeurs de `BEST` et du texte avant et après |
 
 ## 4. Sources externes
 
