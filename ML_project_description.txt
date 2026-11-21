@@ -1,0 +1,9 @@
+18. Intentions d'achat sur un site marchand
+Un site de vente en ligne veut repérer, pendant la visite, les sessions qui vont se terminer par un achat.
+
+Données : Online Shoppers Purchasing Intention (UCI), environ 12 300 sessions sur un an : pages consultées par type et durée, taux de rebond et de sortie, mois, type de visiteur, week-end.
+Cible : Revenue (achat ou non), environ 15 % d'achats.
+Métrique conseillée : rappel et F1 sur la classe « achat », AUC.
+Pièges : classes déséquilibrées ; PageValues est très prédictive car calculée à partir des transactions : comparez un modèle avec et sans elle, et discutez ce qui est réellement connu pendant la visite ; Month, VisitorType et les codes de navigateur ou de région sont des catégories, pas des nombres.
+
+google collab project's link : https://colab.research.google.com/drive/1OPd_DrC-IURm28-9gOgNj-6STZHQQq45?usp=sharing

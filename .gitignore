@@ -12,3 +12,7 @@ venv/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Supports de cours et copie du dépôt d'origine (références locales, non versionnées)
+sessions/
+projet_achat_en_ligne/
