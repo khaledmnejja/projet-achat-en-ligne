@@ -15,3 +15,6 @@ venv/
 
 # Supports de cours (références locales, non versionnées)
 sessions/
+
+# Note locale pour Claude (cite d autres projets du PC) : jamais publiée
+CLAUDE.md
