@@ -137,8 +137,8 @@ Rendu final sur Moodle : **samedi 28/11, 08h00**.
 - Il affiche la probabilité, le seuil et un rappel des limites.
 
 **Étapes :**
-1. **Khaled :** remplacer `app/model.joblib` **et** `app/requirements.txt` par ceux produits en partie 6.1 (corrige E1).
-2. **Omar Idriss :** réécrire le texte `LIMITS` dans `app.py` avec les vrais chiffres du test (corrige E2).
+1. ✅ **Khaled :** `app/model.joblib` **et** `app/requirements.txt` remplacés par ceux produits en partie 6.1 (corrige E1).
+2. ✅ **Omar Idriss :** texte des limites de `app.py` réécrit avec les vrais chiffres du test (`limits_text`, corrige E2). À relire pour pouvoir l'expliquer à l'oral.
 3. **Khaled :** créer un dépôt GitHub public contenant `app.py`, `requirements.txt` et `model.joblib`.
 4. **Khaled :** sur **share.streamlit.io**, cliquer sur New app, choisir le dépôt et le fichier `app.py`, puis Deploy.
 5. **Omar Idriss :** tester l'application (une saisie normale, une saisie absurde).

@@ -38,13 +38,20 @@ PAGE_PAIRS = [
 ]
 COUNT_COLS = {count for count, _ in PAGE_PAIRS}
 
-LIMITS = (
-    "**Limites du modèle.** Entraîné sur les sessions d'un seul site marchand pendant une année, "
-    "sans janvier ni avril. Il détecte environ 7 acheteurs sur 10, mais une alerte sur trois "
-    "seulement correspond à un vrai achat. C'est une aide pour cibler une offre ou une assistance, "
-    "pas une décision automatique : ne l'utilisez ni pour fixer des prix différents selon la région "
-    "ou le type de visiteur, ni sur un autre site sans le réentraîner."
-)
+def limits_text(metrics):
+    """Limites affichées à l'utilisateur. Les chiffres viennent de l'évaluation unique sur le test
+    (partie 5.2, enregistrés dans model.joblib) : rien n'est écrit à la main (correction E2)."""
+    recall, f1 = metrics["rappel"], metrics["f1"]
+    precision = f1 * recall / (2 * recall - f1)   # déduite de F1 = 2PR / (P + R)
+    return (
+        "**Limites du modèle.** Entraîné sur les sessions d'un seul site marchand pendant une année, "
+        f"sans janvier ni avril. Sur notre jeu de test, il détecte {recall * 100:.0f} % des acheteurs, "
+        f"mais seules {precision * 100:.0f} % de ses alertes correspondent à un vrai achat. "
+        "Il rate surtout les visiteurs réguliers (rappel de 54 %, contre 77 % pour les nouveaux visiteurs). "
+        "C'est une aide pour cibler une offre ou une assistance, pas une décision automatique : "
+        "ne l'utilisez ni pour fixer des prix différents selon la région ou le type de visiteur, "
+        "ni sur un autre site sans le réentraîner."
+    )
 
 
 @st.cache_resource
@@ -75,7 +82,7 @@ st.caption(
     f"sur le test : rappel {bundle['metrics_test']['rappel']:.2f}, "
     f"F1 {bundle['metrics_test']['f1']:.2f}, AUC {bundle['metrics_test']['auc']:.2f}"
 )
-st.info(LIMITS)
+st.info(limits_text(bundle["metrics_test"]))
 
 with st.form("session"):
     values = {}
