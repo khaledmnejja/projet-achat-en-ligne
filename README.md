@@ -4,27 +4,21 @@
 > Remplacez tout ce qui est entre crochets et supprimez les lignes en italique avant le rendu.
 > Rendu final sur Moodle : **samedi 28/11, 08h00**, une seule fois par équipe.
 
-*L'organisation des fichiers et le lien entre les six étapes et les parties du notebook unique sont décrits dans `ARCHITECTURE.md`.*
-
 ## Liens
 
-*Choix de l'équipe : tout le code est dans **un seul notebook Colab** (`synora_projet_ml.ipynb`), une partie par étape ; les trois lignes ci-dessous pointent vers ce même notebook. Pour garder ce lien, remplacer le contenu de `lucia.ipynb` dans Drive (clic droit → Gérer les versions → Importer une nouvelle version).*
-
-*Le notebook Colab est partagé en lecture : « Partager » → « Tous les utilisateurs disposant du lien » → Lecteur. Vérifiez chaque lien dans une fenêtre de navigation privée : un lien qui ne s'ouvre pas compte comme un livrable manquant.*
+*Chaque notebook Colab est partagé en lecture : « Partager » → « Tous les utilisateurs disposant du lien » → Lecteur. Vérifiez chaque lien dans une fenêtre de navigation privée : un lien qui ne s'ouvre pas compte comme un livrable manquant.*
 
 | Livrable | Lien |
 | --- | --- |
-| Notebook Colab · parties 1-2, Données (J1, 25/11) | https://colab.research.google.com/drive/1LiB1IPa35JmYHIGbi2EDKlJWYfQkG3AR?usp=sharing |
-| Notebook Colab · parties 3-4, Modèles (J2, fin S4) | https://colab.research.google.com/drive/1LiB1IPa35JmYHIGbi2EDKlJWYfQkG3AR?usp=sharing (même notebook, parties 3 et 4) |
-| Notebook Colab · parties 5-6, Évaluation et export (J3, fin S5) | https://colab.research.google.com/drive/1LiB1IPa35JmYHIGbi2EDKlJWYfQkG3AR?usp=sharing (même notebook, parties 5 et 6) |
+| Notebook Colab 1 · Données (J1, 25/11) | https://colab.research.google.com/drive/1LiB1IPa35JmYHIGbi2EDKlJWYfQkG3AR?usp=sharing (notebook unique, parties 1 et 2) |
+| Notebook Colab 2 · Modèles (J2, fin S4) | https://colab.research.google.com/drive/1LiB1IPa35JmYHIGbi2EDKlJWYfQkG3AR?usp=sharing (notebook unique, parties 3 et 4) |
+| Notebook Colab 3 · Évaluation (J3, fin S5) | https://colab.research.google.com/drive/1LiB1IPa35JmYHIGbi2EDKlJWYfQkG3AR?usp=sharing (notebook unique, parties 5 et 6) |
 | Application Streamlit déployée | [lien Streamlit Community Cloud] |
 | Dépôt GitHub de l'application (`app.py`, `requirements.txt`, `model.joblib`) | [lien] |
 | Journal IA | `JOURNAL_IA.md` (rendu avec ce fichier) |
 | Présentation (6 diapositives, PDF) | [nom du fichier] |
 
 ## 1. Problème · cadrage (fin S2, validé en séance)
-
-*Proposition de cadrage à relire et valider en équipe.*
 
 | Rubrique | Notre réponse |
 | --- | --- |
@@ -46,13 +40,12 @@
 | Colonnes | Traitement | Pourquoi |
 | --- | --- | --- |
 | `Administrative`, `Administrative_Duration`, `Informational`, `Informational_Duration`, `ProductRelated`, `ProductRelated_Duration`, `BounceRates`, `ExitRates`, `SpecialDay` (+ `PageValues` dans la variante « avec ») | `StandardScaler` | Échelles très différentes (secondes contre taux entre 0 et 0,2) |
-| `Month`, `VisitorType`, `OperatingSystems`, `Browser`, `Region`, `TrafficType` | `OneHotEncoder(handle_unknown="ignore")` | Ce sont des catégories ; un code 8 n'est pas « plus grand » qu'un code 2 |
-| `Weekend` | converti en 0 / 1 | Déjà binaire |
+| `Month`, `VisitorType`, `OperatingSystems`, `Browser`, `Region`, `TrafficType` ; `Weekend` | `OneHotEncoder(handle_unknown="ignore")` ; `Weekend` converti en 0 / 1 | Ce sont des catégories ; un code 8 n'est pas « plus grand » qu'un code 2 ; `Weekend` est déjà binaire |
 | `PageValues` (variante « sans ») | retirée | Fuite possible : calculée à partir des transactions |
 
 - **Découpage** : 20 % pour le test, `stratify` oui, `random_state` = 42
 
-*Les données ne sont pas rendues : le notebook les charge depuis leur page officielle ou un fichier téléversé.*
+*Les données ne sont pas rendues : le notebook (partie 1) les charge depuis leur page officielle ou un fichier téléversé.*
 
 ## 3. Résultats (J2 et J3)
 
@@ -63,13 +56,9 @@
 | Forêt aléatoire | | |
 | [Modèle retenu, après GridSearchCV] | | |
 
-*Ajouter une ligne par variante (avec / sans `PageValues`) pour montrer l'écart.*
-
 **Modèle retenu** : [nom], parce que [raison liée à la métrique et à l'utilisateur].
 
-**Principaux hyperparamètres** : [valeurs trouvées par GridSearchCV]
-
-**Seuil de décision** : [valeur], choisi en validation croisée sur l'entraînement (pas sur le test).
+**Principaux hyperparamètres** : [valeurs trouvées par GridSearchCV] ; seuil de décision [valeur], choisi en validation croisée sur l'entraînement (pas sur le test)
 
 ## 4. Limites et usages à éviter (J3)
 
@@ -93,7 +82,7 @@
 ## Avant le rendu
 
 - [ ] Section 1 remplie et validée en S2
-- [ ] Le notebook s'exécute de haut en bas sans erreur, sorties enregistrées
+- [ ] Les 3 notebooks s'exécutent de haut en bas sans erreur, sorties enregistrées
 - [ ] Tous les liens s'ouvrent dans une fenêtre de navigation privée
 - [ ] L'application s'ouvre, refuse les saisies absurdes et rappelle les limites du modèle
 - [ ] Même version de scikit-learn dans `requirements.txt` et dans Colab

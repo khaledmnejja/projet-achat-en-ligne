@@ -22,7 +22,7 @@ Le journal IA prouve que l'équipe sait ce qu'elle a demandé à l'IA, ce qu'ell
 | Sujet (n° et titre) | 18 · Intentions d'achat sur un site marchand |
 | Membres | Khaled Mnejja (modélisateur), Omar Zouari (présentateur), Omar Idriss (évaluateur), Tawfik Zayen (documentaliste), Rayen Hsairi (analyste données) |
 | Outils IA utilisés (nom et version si connue) | Claude Code (modèle Claude Opus 5.5) |
-| Liens des notebooks Colab | Notebook 1 : https://colab.research.google.com/drive/1LiB1IPa35JmYHIGbi2EDKlJWYfQkG3AR?usp=sharing |
+| Liens des notebooks Colab | https://colab.research.google.com/drive/1LiB1IPa35JmYHIGbi2EDKlJWYfQkG3AR?usp=sharing (notebook unique : parties 1-2 pour J1, 3-4 pour J2, 5-6 pour J3) |
 
 ## 2. Journal
 
@@ -49,7 +49,8 @@ Une ligne par usage. Le prompt peut être résumé ; s'il est long, mettez le te
 | 17 | 21/11 | Tawfik Zayen | Organisation | Claude (Claude Code) | « Mets à jour la documentation pour le notebook unique » | README (liens : un même notebook pour les 3 jalons, avec les parties), `ARCHITECTURE.md`, `GUIDE_EQUIPE.md`, `app/README.md` et commentaires de `app.py` | Plus aucune mention des anciens notebooks (recherche dans tous les fichiers) | Aucune |
 | 18 | 21/11 | Tawfik Zayen | Organisation | Claude (Claude Code) | « Je ne veux aucune confusion avec un autre dépôt GitHub présent sur ce PC » | Dépôt distant `origin` = notre dépôt du projet (compte précisé dans l'URL) ; identifiants GitHub séparés par dépôt ; garde-fou local (hook `pre-push`) qui refuse tout push vers un autre dépôt | Garde-fou testé : refus pour un autre dépôt, accord pour le nôtre ; `git remote -v` vérifié | Aucune |
 | 19 | 24/11 | Khaled Mnejja | J3 Déploiement (étape 6) | Claude (Claude Code) | « Continue le projet ML » (étape 6 : surveiller et réentraîner) | Parties 6.2 (rapport de suivi par lot : PSI des variables numériques, catégories inconnues, valeurs hors bornes, part d'achats annoncés, rappel et F1 quand les achats sont connus ; simulation par mois sur le test) et 6.3 (`retrain` : même configuration `BEST`, seuil rechoisi en validation croisée ; `should_replace` : ancien contre nouveau modèle sur des sessions récentes) | Notebook exécuté en entier en local, 0 erreur ; `retrain` sur les mêmes données redonne exactement le seuil de la partie 5 (0,593, contrôle `assert`). Le test n'a servi à aucun choix : la simulation par mois est seulement descriptive | Oui, voir E3 : la première version mettait les 10 mois en alerte (PSI de `SpecialDay`, lots trop petits). Corrigé avant le commit |
-| 20 | | | | | | | | |
+| 20 | 24/11 | Tawfik Zayen | Organisation | Claude (Claude Code) | « La documentation doit toujours suivre le modèle que je t'ai donné » | README remis à la structure exacte de `template_README.md` : lignes en italique ajoutées retirées, libellés « Notebook Colab 1, 2, 3 » rétablis (avec les parties du notebook unique dans la colonne des liens), seuil de décision déplacé dans la ligne des hyperparamètres, `Weekend` regroupé avec les catégorielles, case de la checklist rétablie ; champ des liens Colab du journal mis à jour | Comparaison ligne à ligne avec le modèle (`diff`) : il ne reste que des champs remplis, aucune section ni ligne ajoutée. Journal : 9 colonnes et 6 rubriques par fiche, conformes | L'IA avait ajouté au README une sous-section absente du modèle (ligne 19) : retirée. La checklist parle de 3 notebooks alors que nous en avons un seul : à faire valider par l'enseignant |
+| 21 | | | | | | | | |
 
 Supprimez les deux lignes d'exemple avant le rendu.
 
