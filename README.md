@@ -10,9 +10,9 @@
 
 | Livrable | Lien |
 | --- | --- |
-| Notebook Colab 1 · Données (J1, 25/11) | https://colab.research.google.com/drive/1LiB1IPa35JmYHIGbi2EDKlJWYfQkG3AR?usp=sharing (notebook unique, parties 1 et 2) |
-| Notebook Colab 2 · Modèles (J2, fin S4) | https://colab.research.google.com/drive/1LiB1IPa35JmYHIGbi2EDKlJWYfQkG3AR?usp=sharing (notebook unique, parties 3 et 4) |
-| Notebook Colab 3 · Évaluation (J3, fin S5) | https://colab.research.google.com/drive/1LiB1IPa35JmYHIGbi2EDKlJWYfQkG3AR?usp=sharing (notebook unique, parties 5 et 6) |
+| Notebook Colab 1 · Données (J1, 25/11) | https://colab.research.google.com/drive/1HTMnvKr9NkoFk7ZmI2E4jtd99rfjie32?usp=sharing (notebook unique, parties 1 et 2) |
+| Notebook Colab 2 · Modèles (J2, fin S4) | https://colab.research.google.com/drive/1HTMnvKr9NkoFk7ZmI2E4jtd99rfjie32?usp=sharing (notebook unique, parties 3 et 4) |
+| Notebook Colab 3 · Évaluation (J3, fin S5) | https://colab.research.google.com/drive/1HTMnvKr9NkoFk7ZmI2E4jtd99rfjie32?usp=sharing (notebook unique, parties 5 et 6) |
 | Application Streamlit déployée | [lien Streamlit Community Cloud] |
 | Dépôt GitHub de l'application (`app.py`, `requirements.txt`, `model.joblib`) | [lien] |
 | Journal IA | `JOURNAL_IA.md` (rendu avec ce fichier) |

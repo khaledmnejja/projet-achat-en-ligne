@@ -93,7 +93,7 @@ Rendu final sur Moodle : **samedi 28/11, 08h00**.
 - Pourquoi on compare au modèle naïf.
 
 **Étapes :**
-1. **Khaled :** mettre `synora_projet_ml.ipynb` dans Colab (à la place de `lucia.ipynb` pour garder le lien), **Exécution → Tout exécuter** (environ 15 min), enregistrer.
+1. **Khaled :** importer la dernière version de `synora_projet_ml.ipynb` dans le notebook Colab du README (`1HTM…`, Gérer les versions → Importer une nouvelle version, pour garder le lien), **Exécution → Tout exécuter** (environ 15 min), enregistrer.
 2. **Khaled :** rédiger 4.2 et le bilan J2.
 3. **Tawfik :** reporter les scores dans la section 3 du README (une ligne par modèle et par variante), puis télécharger le `.ipynb`.
 
