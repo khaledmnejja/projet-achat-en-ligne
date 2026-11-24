@@ -78,6 +78,18 @@
 - **Usages à éviter** :
 - **Données personnelles et variables sensibles** : [présentes ? comment traitées ?]
 
+### Suivi et réentraînement après la mise en service (étape 6)
+
+*Détail et code : notebook, parties 6.2 et 6.3.*
+
+| Quoi | Comment | Alerte si |
+| --- | --- | --- |
+| Entrées | PSI de chaque variable numérique (sauf `SpecialDay`, qui dépend du mois), catégories jamais vues, valeurs hors bornes, par lot mensuel | PSI > 0,25 ou plus de 5 % de sessions avec une catégorie inconnue (lots d'au moins 100 sessions) |
+| Sorties | Part de sessions annoncées « achat » | Pas d'alerte automatique : comparée à la part d'achats réels dès qu'elle est connue |
+| Qualité | Rappel et F1 du lot, dès que les achats sont connus | Rappel inférieur de plus de 10 points à celui du test (lots d'au moins 20 achats) |
+
+**Réentraînement** : après deux alertes de suite, et au moins une fois par saison. On ajoute les nouvelles sessions et on repart de l'étape 2, avec la même configuration et un seuil rechoisi en validation croisée. Le nouveau modèle ne remplace l'ancien que s'il obtient un meilleur F1 sur les sessions les plus récentes ; l'ancien `model.joblib` est gardé pour revenir en arrière.
+
 ## 5. Équipe
 
 *Équipes de 4 à 5. Les rôles tournent à chaque jalon ; chacun code au moins une partie (vérifié par l'historique des notebooks et la question individuelle de la soutenance).*

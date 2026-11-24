@@ -48,7 +48,8 @@ Une ligne par usage. Le prompt peut être résumé ; s'il est long, mettez le te
 | 16 | 21/11 | Khaled Mnejja | J2-J3 (étapes 1 à 6) | Claude (Claude Code) | « Tout le code doit être dans un seul projet Colab » (option : un seul notebook) | Fusion des 3 notebooks en `notebooks/synora_projet_ml.ipynb` : une seule cellule `CONFIG`, parties 1 à 6 numérotées comme les étapes du cours, `BEST = best` (la partie 5 reprend automatiquement les réglages de la partie 4) ; anciens notebooks retirés du dépôt (gardés dans l'historique git) | Notebook fusionné exécuté en entier en local : 30 cellules de code sur 30, 0 erreur, 10 graphiques, export de `model.joblib` réussi ; découpage 9 764 / 2 441 identique. Les scores sur le test de cet essai local ne servent à aucun choix : modèles, réglages et seuil restent fixés en validation croisée | Corrige E2 : plus aucune valeur de `BEST` écrite à la main. Écart au format du cours (3 notebooks attendus) : choix de l'équipe, à confirmer auprès de l'enseignant |
 | 17 | 21/11 | Tawfik Zayen | Organisation | Claude (Claude Code) | « Mets à jour la documentation pour le notebook unique » | README (liens : un même notebook pour les 3 jalons, avec les parties), `ARCHITECTURE.md`, `GUIDE_EQUIPE.md`, `app/README.md` et commentaires de `app.py` | Plus aucune mention des anciens notebooks (recherche dans tous les fichiers) | Aucune |
 | 18 | 21/11 | Tawfik Zayen | Organisation | Claude (Claude Code) | « Je ne veux aucune confusion avec un autre dépôt GitHub présent sur ce PC » | Dépôt distant `origin` = notre dépôt du projet (compte précisé dans l'URL) ; identifiants GitHub séparés par dépôt ; garde-fou local (hook `pre-push`) qui refuse tout push vers un autre dépôt | Garde-fou testé : refus pour un autre dépôt, accord pour le nôtre ; `git remote -v` vérifié | Aucune |
-| 19 | | | | | | | | |
+| 19 | 24/11 | Khaled Mnejja | J3 Déploiement (étape 6) | Claude (Claude Code) | « Continue le projet ML » (étape 6 : surveiller et réentraîner) | Parties 6.2 (rapport de suivi par lot : PSI des variables numériques, catégories inconnues, valeurs hors bornes, part d'achats annoncés, rappel et F1 quand les achats sont connus ; simulation par mois sur le test) et 6.3 (`retrain` : même configuration `BEST`, seuil rechoisi en validation croisée ; `should_replace` : ancien contre nouveau modèle sur des sessions récentes) ; plan résumé dans la section 4 du README | Notebook exécuté en entier en local, 0 erreur ; `retrain` sur les mêmes données redonne exactement le seuil de la partie 5 (0,593, contrôle `assert`). Le test n'a servi à aucun choix : la simulation par mois est seulement descriptive | Oui, voir E3 : la première version mettait les 10 mois en alerte (PSI de `SpecialDay`, lots trop petits). Corrigé avant le commit |
+| 20 | | | | | | | | |
 
 Supprimez les deux lignes d'exemple avant le rendu.
 
@@ -77,6 +78,17 @@ Une fiche par erreur importante (au moins une). Numérotez-les E1, E2… et renv
 | Comment vous l'avez repéré | Relecture du notebook 3 et de `app.py` avant leur exécution (notebook 2 pas encore exécuté) |
 | Correction apportée | `BEST` : notebook unique, la partie 5 reprend `best` de la partie 4 (`BEST = best`), plus aucune valeur écrite à la main (ligne 16). [À faire en J3] réécrire `LIMITS` dans `app.py` avec le rappel et la précision de notre test |
 | Effet mesuré | [À compléter] Valeurs de `BEST` et du texte avant et après |
+
+### E3 — Suivi en production qui déclenche une alerte tous les mois
+
+| Rubrique | À remplir |
+| --- | --- |
+| Ligne du journal | 19 |
+| Ce que l'IA a proposé | En partie 6.2, une alerte de dérive dès que le PSI d'une variable numérique dépasse 0,25, sur toutes les variables, et une alerte de baisse du rappel sur tous les lots mensuels |
+| Pourquoi c'est faux | `SpecialDay` n'est non nulle qu'en février et mai : pour les autres mois, son PSI vaut 0,727 par construction, sans aucune dérive réelle. Février (37 sessions, aucun achat) donnait un rappel de 0. Une alerte qui sonne tout le temps ne sert à rien : personne ne la regarderait plus |
+| Comment vous l'avez repéré | Lecture du tableau de suivi après l'exécution complète du notebook en local : 10 mois en alerte sur 10, avec `SpecialDay` comme variable la plus en dérive dans 8 mois |
+| Correction apportée | `SpecialDay` exclue du PSI (variable de calendrier) ; pas d'alerte sur les lots de moins de 100 sessions, ni sur le rappel avec moins de 20 achats ; la raison de chaque alerte est affichée |
+| Effet mesuré | Essai local (à confirmer dans Colab) : de 10 mois en alerte à 3 (mars et mai : baisse du rappel ; octobre : dérive de `Administrative`), 5 lots signalés trop petits, novembre et décembre sans alerte |
 
 ## 4. Sources externes
 

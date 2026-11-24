@@ -12,7 +12,7 @@ Il sert de carte : chaque étape a un endroit précis, et chaque fichier sait d'
 | 3 · Modèle | Choisir les algorithmes candidats et une référence naïve | `notebooks/synora_projet_ml.ipynb` (partie 3) | J2 · fin S4 | Liste de `Pipeline` candidats |
 | 4 · Entraînement | Validation croisée stratifiée, avec et sans `PageValues`, puis `GridSearchCV` | `notebooks/synora_projet_ml.ipynb` (partie 4) | J2 · fin S4 | Tableau des scores, meilleurs hyperparamètres |
 | 5 · Évaluation | Mesurer **une seule fois** sur le test, choisir le seuil, analyser les erreurs | `notebooks/synora_projet_ml.ipynb` (parties 5 et 6.1) | J3 · fin S5 | Matrice de confusion, rapport, `model.joblib` |
-| 6 · Déploiement | Servir le modèle, refuser les saisies absurdes, rappeler les limites | `app/app.py` + `app/requirements.txt` + `app/model.joblib` | J3 · fin S5 | Application Streamlit Community Cloud |
+| 6 · Déploiement | Servir le modèle, refuser les saisies absurdes, rappeler les limites ; surveiller et réentraîner | `app/app.py` + `app/requirements.txt` + `app/model.joblib` ; notebook, parties 6.2 et 6.3 | J3 · fin S5 | Application Streamlit Community Cloud |
 
 La boucle de retour du schéma (« une mauvaise évaluation renvoie à la préparation ») est possible
 parce que tout le projet est dans **un seul notebook** : un même découpage, une seule cellule de configuration, et la partie 5 reprend automatiquement les réglages de la partie 4 (`BEST = best`).

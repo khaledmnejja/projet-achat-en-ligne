@@ -144,6 +144,17 @@ Rendu final sur Moodle : **samedi 28/11, 08h00**.
 5. **Omar Idriss :** tester l'application (une saisie normale, une saisie absurde).
 6. **Tawfik :** ajouter les liens de l'application et du dépôt dans le README.
 
+**Après la mise en service (notebook, parties 6.2 et 6.3) :**
+
+| Section | Ce qu'elle fait |
+| --- | --- |
+| 6.2 Surveiller | Rapport de suivi par lot (un lot par mois du test, en simulation) : dérive des entrées (PSI), catégories inconnues, part d'achats annoncés, rappel et F1 quand les achats sont connus, raison de chaque alerte |
+| 6.3 Réentraîner | Quand réentraîner, comment (retour à l'étape 2 avec les nouvelles sessions), et règle de remplacement : le nouveau modèle doit battre l'ancien sur les sessions récentes |
+
+**Idées à savoir expliquer :** ce qu'est une dérive des données ; pourquoi on ne connaît le rappel qu'après coup ; pourquoi `SpecialDay` est exclue du PSI ; pourquoi on ne remplace pas un modèle sans le comparer à l'ancien.
+
+7. **Khaled :** après l'exécution dans Colab, rédiger la lecture du tableau de suivi (6.2).
+
 ---
 
 ## Documentation (tout au long du projet) · responsable : Tawfik
