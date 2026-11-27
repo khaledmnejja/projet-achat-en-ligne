@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Synora · Intentions d'achat sur un site marchand</title>
+<style>
+  @page { size: 1280px 720px; margin: 0; }
+  :root {
+    --ink: #1b1f24; --ink-2: #4a525c; --muted: #7a828c; --line: #e3e5e8;
+    --surface: #fcfcfb; --panel: #f3f4f5; --accent: #2a78d6;
+    --series-1: #2a78d6; --series-2: #eb6834;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif; color: var(--ink); background: #ddd; }
+  .slide { width: 1280px; height: 720px; background: var(--surface); padding: 56px 72px 48px; position: relative;
+           page-break-after: always; break-after: page; overflow: hidden; display: flex; flex-direction: column; }
+  .slide + .slide { margin-top: 0; }
+  .kicker { font-size: 15px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+  h1 { font-size: 40px; line-height: 1.15; margin: 10px 0 26px; font-weight: 650; max-width: 1080px; }
+  h2 { font-size: 19px; font-weight: 650; margin-bottom: 10px; }
+  p, li { font-size: 19px; line-height: 1.45; color: var(--ink-2); }
+  ul { padding-left: 22px; } li { margin-bottom: 8px; }
+  b { color: var(--ink); font-weight: 650; }
+  code { font-family: Consolas, "Cascadia Mono", monospace; font-size: .92em; background: var(--panel); padding: 1px 5px; border-radius: 4px; color: var(--ink); }
+  .cols { display: grid; gap: 36px; flex: 1; }
+  .c2 { grid-template-columns: 1fr 1fr; } .c3 { grid-template-columns: 1fr 1fr 1fr; }
+  .card { background: var(--panel); border-radius: 12px; padding: 22px 24px; }
+  .foot { position: absolute; left: 72px; right: 72px; bottom: 22px; display: flex; justify-content: space-between;
+          font-size: 13px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 10px; }
+  .stat { font-size: 46px; font-weight: 650; color: var(--ink); line-height: 1; }
+  .stat-l { font-size: 15px; color: var(--ink-2); margin-top: 6px; }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-bottom: 26px; }
+  .stats .card { padding: 18px 20px; }
+  .take { margin-top: auto; margin-bottom: 26px; font-size: 20px; color: var(--ink); border-left: 4px solid var(--accent); padding: 6px 0 6px 16px; }
+  .steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 26px; }
+  .step { background: var(--panel); border-radius: 10px; padding: 14px 14px 16px; }
+  .step .n { font-size: 13px; font-weight: 700; color: var(--accent); letter-spacing: .08em; }
+  .step .t { font-size: 18px; font-weight: 650; margin: 4px 0 6px; }
+  .step .d { font-size: 15px; color: var(--ink-2); line-height: 1.35; }
+  table { border-collapse: collapse; width: 100%; font-size: 16px; }
+  th, td { text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--line); color: var(--ink-2); }
+  th { color: var(--ink); font-weight: 650; }
+  .title-slide h1 { font-size: 54px; margin-top: 64px; }
+  .title-slide .sub { font-size: 24px; color: var(--ink-2); max-width: 900px; }
+  .team { margin-top: auto; margin-bottom: 40px; font-size: 17px; color: var(--ink-2); }
+  .legend { display: flex; gap: 22px; font-size: 15px; color: var(--ink-2); margin-bottom: 6px; }
+  .sw { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 7px; vertical-align: -1px; }
+  @media screen { body { padding: 24px 0; } .slide { margin: 0 auto 24px; box-shadow: 0 2px 12px rgba(0,0,0,.12); } }
+</style>
+</head>
+<body>
+
+<!-- 1 · Le problème et l'utilisateur -->
+<section class="slide title-slide">
+  <div class="kicker">Sujet 18 · Machine Learning, L3 GLSI, IIT Sfax</div>
+  <h1>Cette visite va-t-elle se terminer par un achat&nbsp;?</h1>
+  <p class="sub">Pour l'équipe marketing d'un site marchand : repérer <b>pendant la visite</b> les sessions qui vont acheter, pour leur proposer une aide, une offre ou un rappel de panier.</p>
+  <div class="cols c3" style="flex:0; margin-top:38px">
+    <div class="card"><h2>Tâche</h2><p>Classification binaire supervisée. Cible <code>Revenue</code> : 15,5&nbsp;% d'achats.</p></div>
+    <div class="card"><h2>Métrique</h2><p><b>F1</b> sur la classe « achat », avec le rappel et l'AUC. Rater un acheteur coûte le plus cher.</p></div>
+    <div class="card"><h2>Référence à battre</h2><p>« Jamais d'achat » : 84,5&nbsp;% d'exactitude, mais <b>F1 = 0</b>.</p></div>
+  </div>
+  <p class="team"><b>Équipe Synora</b> · Khaled Mnejja · Omar Zouari · Omar Idriss · Tawfik Zayen · Rayen Hsairi</p>
+  <div class="foot"><span>Synora · Intentions d'achat</span><span>1 / 6</span></div>
+</section>
+
+<!-- 2 · Les données et les pièges -->
+<section class="slide">
+  <div class="kicker">Données</div>
+  <h1>12 330 visites d'un site marchand, et trois pièges</h1>
+  <div class="cols c2">
+    <div>
+      <ul>
+        <li><b>Source</b> : Online Shoppers Purchasing Intention, UCI (CC BY 4.0), 18 colonnes : pages vues et durées, taux de rebond et de sortie, mois, type de visiteur.</li>
+        <li><b>Qualité</b> : aucune valeur manquante ; 125 doublons (des rebonds) retirés avant le découpage ; « June » renommé ; <b>pas de janvier ni d'avril</b>.</li>
+        <li><b>Durées extrêmes</b> : 867 visites de plus d'1&nbsp;h (onglet oublié), gardées.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>Les pièges du sujet</h2>
+      <ul>
+        <li><b>Classes déséquilibrées</b> : 15,5&nbsp;% d'achats, l'exactitude est trompeuse.</li>
+        <li><b><code>PageValues</code></b> : 56&nbsp;% d'achats quand elle est &gt; 0, contre 4&nbsp;% sinon. Calculée à partir des achats : connue trop tard ?</li>
+        <li><b>Codes</b> : <code>Region</code>, <code>Browser</code>, <code>TrafficType</code>… sont des catégories : la région 8 n'est pas « plus » que la région 2.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="take">On compare tous les modèles <b>avec et sans</b> <code>PageValues</code>.</p>
+  <div class="foot"><span>Synora · Intentions d'achat</span><span>2 / 6</span></div>
+</section>
+
+<!-- 3 · La préparation -->
+<section class="slide">
+  <div class="kicker">Préparation</div>
+  <h1>Séparer d'abord, préparer ensuite : aucune fuite</h1>
+  <div class="steps">
+    <div class="step"><div class="n">1</div><div class="t">Explorer</div><div class="d">Types, doublons, durées, cible, graphiques commentés</div></div>
+    <div class="step"><div class="n">2</div><div class="t">Choisir</div><div class="d">Doublons retirés ; <code>PageValues</code> testée avec et sans</div></div>
+    <div class="step"><div class="n">3</div><div class="t">Séparer</div><div class="d">80 / 20, <code>stratify</code>, graine 42 : 9 764 / 2 441</div></div>
+    <div class="step"><div class="n">4</div><div class="t">Apprendre</div><div class="d"><code>fit</code> sur l'entraînement seulement</div></div>
+    <div class="step"><div class="n">5</div><div class="t">Appliquer</div><div class="d"><code>transform</code> sur le test et les nouvelles visites</div></div>
+  </div>
+  <table>
+    <tr><th>Colonnes</th><th>Traitement</th><th>Pourquoi</th></tr>
+    <tr><td>Pages vues, durées, taux de rebond et de sortie, <code>SpecialDay</code></td><td><code>StandardScaler</code></td><td>Secondes contre taux entre 0 et 0,2</td></tr>
+    <tr><td><code>Month</code>, <code>VisitorType</code>, <code>OperatingSystems</code>, <code>Browser</code>, <code>Region</code>, <code>TrafficType</code></td><td><code>OneHotEncoder</code></td><td>Catégories sans ordre</td></tr>
+    <tr><td><code>Weekend</code></td><td>0 / 1</td><td>Déjà binaire</td></tr>
+  </table>
+  <p class="take" style="margin-bottom:0; margin-top:22px">Tout dans un <code>ColumnTransformer</code> au début d'un <code>Pipeline</code> : la validation croisée le réapprend à chaque pli.</p>
+  <div class="foot"><span>Synora · Intentions d'achat</span><span>3 / 6</span></div>
+</section>
+
+<!-- 4 · Les modèles -->
+<section class="slide">
+  <div class="kicker">Modèles · validation croisée sur l'entraînement</div>
+  <h1><code style="font-size:.9em">PageValues</code> fait gagner 0,27 de F1 : trop beau pour être connu pendant la visite</h1>
+  <div class="cols c2" style="grid-template-columns: 1.35fr 1fr">
+    <div>
+      <div class="legend"><span><span class="sw" style="background:var(--series-1)"></span>Sans <code>PageValues</code> (déployé)</span><span><span class="sw" style="background:var(--series-2)"></span>Avec <code>PageValues</code></span></div>
+      <svg viewBox="0 0 660 330" width="660" height="330" role="img" aria-label="F1 au meilleur seuil, validation croisée 5 plis, par modèle et par variante">
+<g font-size="14" fill="#4a525c">
+<g stroke="#e3e5e8" stroke-width="1">
+<line x1="190" y1="10" x2="190" y2="300"/>
+<line x1="290.0" y1="10" x2="290.0" y2="300"/>
+<line x1="390.0" y1="10" x2="390.0" y2="300"/>
+<line x1="490.0" y1="10" x2="490.0" y2="300"/>
+<line x1="590.0" y1="10" x2="590.0" y2="300"/>
+</g>
+<text x="190" y="320" text-anchor="middle">0</text>
+<text x="290.0" y="320" text-anchor="middle">0,2</text>
+<text x="390.0" y="320" text-anchor="middle">0,4</text>
+<text x="490.0" y="320" text-anchor="middle">0,6</text>
+<text x="590.0" y="320" text-anchor="middle">0,8</text>
+<text x="178" y="46" text-anchor="end">Référence naïve</text>
+<text x="196.0" y="37" fill="#1b1f24">0</text>
+<text x="196.0" y="55" fill="#1b1f24">0</text>
+<text x="178" y="118" text-anchor="end">Régression logistique</text>
+<rect x="190" y="96" width="196.5" height="16" rx="4" fill="#2a78d6"/>
+<rect x="190" y="114" width="318.5" height="16" rx="4" fill="#eb6834"/>
+<text x="392.5" y="109" fill="#1b1f24">0,393</text>
+<text x="514.5" y="127" fill="#1b1f24">0,637</text>
+<text x="178" y="190" text-anchor="end">Forêt aléatoire</text>
+<rect x="190" y="168" width="207.0" height="16" rx="4" fill="#2a78d6"/>
+<rect x="190" y="186" width="345.0" height="16" rx="4" fill="#eb6834"/>
+<text x="403.0" y="181" fill="#1b1f24">0,414</text>
+<text x="541.0" y="199" fill="#1b1f24">0,690</text>
+<text x="178" y="262" text-anchor="end" font-weight="650" fill="#1b1f24">Gradient boosting</text>
+<rect x="190" y="240" width="209.0" height="16" rx="4" fill="#2a78d6"/>
+<rect x="190" y="258" width="339.0" height="16" rx="4" fill="#eb6834"/>
+<text x="405.0" y="253" fill="#1b1f24" font-weight="650">0,418 · retenu</text>
+<text x="535.0" y="271" fill="#1b1f24">0,678</text>
+</g>
+</svg>
+      <p style="font-size:14px; color:#7a828c">F1 « achat » au meilleur seuil de chaque modèle, validation croisée 5 plis, test jamais utilisé.</p>
+    </div>
+    <div class="card">
+      <h2>Ce qu'on a retenu</h2>
+      <ul>
+        <li>Tous les modèles battent la référence (F1 = 0).</li>
+        <li>Au seuil 0,5, la forêt semblait la pire (0,138) : comparer chaque modèle <b>à son meilleur seuil</b>.</li>
+        <li><b>Gradient boosting sans <code>PageValues</code></b>, réglé par <code>GridSearchCV</code> : <code>learning_rate = 0.05</code>, <code>max_depth = 6</code>.</li>
+        <li>Tous les modèles réglés : la forêt fait jeu égal (écart 0,005, dans le bruit). Le choix tient.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot"><span>Synora · Intentions d'achat</span><span>4 / 6</span></div>
+</section>
+
+<!-- 5 · L'évaluation et les limites -->
+<section class="slide">
+  <div class="kicker">Évaluation · test mesuré une seule fois · seuil 0,593 choisi en validation croisée</div>
+  <h1>Il trouve 6 acheteurs sur 10, au prix de fausses alertes</h1>
+  <div class="stats">
+    <div class="card"><div class="stat">0,443</div><div class="stat-l">F1 « achat » (référence : 0)</div></div>
+    <div class="card"><div class="stat">60&nbsp;%</div><div class="stat-l">des acheteurs détectés (rappel)</div></div>
+    <div class="card"><div class="stat">35&nbsp;%</div><div class="stat-l">des alertes sont de vrais achats</div></div>
+    <div class="card"><div class="stat">0,785</div><div class="stat-l">AUC</div></div>
+  </div>
+  <div class="cols c2">
+    <div>
+      <h2>Où il se trompe</h2>
+      <ul>
+        <li>≈ 150 acheteurs ratés sur 382, ≈ 420 fausses alertes.</li>
+        <li>Visiteurs réguliers : rappel <b>54&nbsp;%</b>, contre 77&nbsp;% pour les nouveaux.</li>
+        <li>Sur un <b>mois jamais vu</b> : F1 0,334. Le test est optimiste pour une nouvelle période.</li>
+        <li>Par région : pas d'écart net (0,55 à 0,64 pour les régions d'au moins 30 acheteurs).</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>Usages à éviter</h2>
+      <ul>
+        <li>Décider seul, à la place de l'équipe marketing.</li>
+        <li>Fixer des prix selon la région ou le type de visiteur.</li>
+        <li>Un autre site ou une autre période sans réentraîner.</li>
+        <li>La version avec <code>PageValues</code> en direct.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot"><span>Synora · Intentions d'achat</span><span>5 / 6</span></div>
+</section>
+
+<!-- 6 · La démonstration -->
+<section class="slide">
+  <div class="kicker">Déploiement · démonstration</div>
+  <h1>Une application Streamlit, surveillée et réentraînable</h1>
+  <div class="cols c3">
+    <div class="card"><h2>Dans l'application</h2><ul>
+      <li>On saisit une visite, on obtient la <b>probabilité d'achat</b> et le seuil d'alerte.</li>
+      <li>Elle <b>refuse</b> les saisies impossibles : aucune page vue, durée sans page.</li>
+      <li>Elle <b>rappelle les limites</b>, avec les chiffres du test lus dans le modèle.</li></ul></div>
+    <div class="card"><h2>Fiabilité</h2><ul>
+      <li>Mêmes versions dans Colab et en production (scikit-learn 1.6.1).</li>
+      <li><b>6 tests automatiques</b> de l'application, tous réussis.</li>
+      <li>Aucun chiffre écrit à la main.</li></ul></div>
+    <div class="card"><h2>Après la mise en ligne</h2><ul>
+      <li>Suivi par lot : dérive des entrées (PSI), part d'achats annoncés, rappel.</li>
+      <li>Réentraîner si une alerte se répète, et ne remplacer le modèle que s'il bat l'ancien.</li></ul></div>
+  </div>
+  <p class="take">Démonstration en direct : une visite normale, puis une saisie absurde.</p>
+  <div class="foot"><span>Synora · Intentions d'achat</span><span>6 / 6</span></div>
+</section>
+
+</body>
+</html>

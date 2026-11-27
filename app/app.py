@@ -38,16 +38,22 @@ PAGE_PAIRS = [
 ]
 COUNT_COLS = {count for count, _ in PAGE_PAIRS}
 
-def limits_text(metrics):
+def limits_text(metrics, recall_by_visitor):
     """Limites affichées à l'utilisateur. Les chiffres viennent de l'évaluation unique sur le test
-    (partie 5.2, enregistrés dans model.joblib) : rien n'est écrit à la main (correction E2)."""
+    (parties 5.2 et 5.3, enregistrés dans model.joblib) : rien n'est écrit à la main (correction E2)."""
     recall, f1 = metrics["rappel"], metrics["f1"]
-    precision = f1 * recall / (2 * recall - f1)   # déduite de F1 = 2PR / (P + R)
+    # précision mesurée en partie 5.2 ; un ancien model.joblib ne l'a pas : on la déduit de F1 = 2PR / (P + R)
+    precision = metrics.get("precision", f1 * recall / (2 * recall - f1))
+    returning = recall_by_visitor["Returning_Visitor"]
+    new = recall_by_visitor["New_Visitor"]
     return (
-        "**Limites du modèle.** Entraîné sur les sessions d'un seul site marchand pendant une année, "
+        "**Limites du modèle.** Entraîné sur les sessions complètes d'un seul site marchand pendant une année, "
         f"sans janvier ni avril. Sur notre jeu de test, il détecte {recall * 100:.0f} % des acheteurs, "
         f"mais seules {precision * 100:.0f} % de ses alertes correspondent à un vrai achat. "
-        "Il rate surtout les visiteurs réguliers (rappel de 54 %, contre 77 % pour les nouveaux visiteurs). "
+        f"Il rate surtout les visiteurs réguliers (rappel de {returning * 100:.0f} %, "
+        f"contre {new * 100:.0f} % pour les nouveaux visiteurs). "
+        "En cours de visite, les pages vues et les durées ne sont pas encore définitives : "
+        "l'estimation est plus fiable en fin de visite. "
         "C'est une aide pour cibler une offre ou une assistance, pas une décision automatique : "
         "ne l'utilisez ni pour fixer des prix différents selon la région ou le type de visiteur, "
         "ni sur un autre site sans le réentraîner."
@@ -82,7 +88,7 @@ st.caption(
     f"sur le test : rappel {bundle['metrics_test']['rappel']:.2f}, "
     f"F1 {bundle['metrics_test']['f1']:.2f}, AUC {bundle['metrics_test']['auc']:.2f}"
 )
-st.info(limits_text(bundle["metrics_test"]))
+st.info(limits_text(bundle["metrics_test"], bundle["rappel_par_groupe"]["VisitorType"]))
 
 with st.form("session"):
     values = {}

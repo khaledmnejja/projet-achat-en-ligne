@@ -23,3 +23,12 @@ peut refuser de se charger avec une autre.
 pip install -r requirements.txt
 streamlit run app.py
 ```
+
+## Tester
+
+```
+pip install pytest
+python -m pytest test_app.py
+```
+
+Six tests : modèle cohérent (variante sans `PageValues`), limites lues dans `model.joblib`, session sans page refusée, durée sans page refusée, saisies normales qui donnent une probabilité.
