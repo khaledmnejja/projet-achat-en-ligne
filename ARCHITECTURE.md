@@ -7,15 +7,15 @@ Il sert de carte : chaque étape a un endroit précis, et chaque fichier sait d'
 
 | Étape | Rôle | Fichier | Jalon | Sortie |
 | --- | --- | --- | --- | --- |
-| 1 · Collecte | Charger les données depuis la page officielle UCI, contrôler la qualité | `notebooks/01_donnees.ipynb` (notebook Colab 1) et `notebooks/synora_projet_ml.ipynb` (partie 1) | J1 · 25/11 | DataFrame propre, constats qualité |
-| 2 · Préparation | Nettoyer, encoder, normaliser, **séparer train / test avant toute préparation** | `notebooks/01_donnees.ipynb` (notebook Colab 1) et `notebooks/synora_projet_ml.ipynb` (partie 2) | J1 · 25/11 | `ColumnTransformer` ajusté sur le train seul |
+| 1 · Collecte | Charger les données depuis la page officielle UCI, contrôler la qualité | `notebooks/synora_projet_ml.ipynb` (partie 1) | J1 · 25/11 | DataFrame propre, constats qualité |
+| 2 · Préparation | Nettoyer, encoder, normaliser, **séparer train / test avant toute préparation** | `notebooks/synora_projet_ml.ipynb` (partie 2) | J1 · 25/11 | `ColumnTransformer` ajusté sur le train seul |
 | 3 · Modèle | Choisir les algorithmes candidats et une référence naïve | `notebooks/synora_projet_ml.ipynb` (partie 3) | J2 · fin S4 | Liste de `Pipeline` candidats |
 | 4 · Entraînement | Validation croisée stratifiée, avec et sans `PageValues`, puis `GridSearchCV` | `notebooks/synora_projet_ml.ipynb` (partie 4) | J2 · fin S4 | Tableau des scores, meilleurs hyperparamètres |
 | 5 · Évaluation | Mesurer **une seule fois** sur le test, choisir le seuil, analyser les erreurs | `notebooks/synora_projet_ml.ipynb` (parties 5 et 6.1) | J3 · fin S5 | Matrice de confusion, rapport, `model.joblib` |
 | 6 · Déploiement | Servir le modèle, refuser les saisies absurdes, rappeler les limites ; surveiller et réentraîner | `app/app.py` + `app/requirements.txt` + `app/model.joblib` ; notebook, parties 6.2 et 6.3 | J3 · fin S5 | Application Streamlit Community Cloud |
 
 La boucle de retour du schéma (« une mauvaise évaluation renvoie à la préparation ») est possible
-parce que tout le projet est dans **un même notebook complet** (`01_donnees.ipynb` n'en reprend que les parties 1-2 pour le jalon 1, sans modèle ni score) : un même découpage, une seule cellule de configuration, et la partie 5 reprend automatiquement les réglages de la partie 4 (`BEST = best`).
+parce que tout le projet est dans **un seul notebook** (le notebook de J1 rendu le 25/11 est archivé dans `rendu_J1/`) : un même découpage, une seule cellule de configuration, et la partie 5 reprend automatiquement les réglages de la partie 4 (`BEST = best`).
 
 ## 2. Arborescence
 
@@ -27,8 +27,7 @@ synora_achat_en_ligne/
 ├── .gitignore               ← exclut data/ et les fichiers temporaires
 ├── data/                    ← copie locale du CSV, jamais rendue ni poussée sur GitHub
 ├── notebooks/
-│   ├── 01_donnees.ipynb        ← notebook Colab 1 (J1) : parties 1-2 seulement, ni modèle ni score
-│   └── synora_projet_ml.ipynb  ← notebook complet : parties 1 à 6 (étapes 1 à 6), lien de J2 et J3
+│   └── synora_projet_ml.ipynb  ← notebook unique : parties 1 à 6 (étapes 1 à 6), lien de J1, J2 et J3
 ├── app/                     ← étape 6, c'est ce dossier qui devient le dépôt GitHub
 │   ├── app.py
 │   ├── requirements.txt     ← régénéré par la partie 6 du notebook avec les versions exactes de Colab

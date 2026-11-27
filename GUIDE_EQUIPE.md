@@ -1,6 +1,6 @@
 # Guide de l'équipe Synora · Sujet 18, intentions d'achat
 
-Document de travail interne (non demandé par le cours). Il explique chaque partie du notebook complet `notebooks/synora_projet_ml.ipynb` (et du notebook du jalon 1, `notebooks/01_donnees.ipynb`), les étapes à suivre et qui fait quoi.
+Document de travail interne (non demandé par le cours). Il explique chaque partie du notebook unique `notebooks/synora_projet_ml.ipynb`, les étapes à suivre et qui fait quoi.
 Rendu final sur Moodle : **samedi 28/11, 08h00**.
 
 ## L'équipe et les rôles (J1)
@@ -26,14 +26,14 @@ Rendu final sur Moodle : **samedi 28/11, 08h00**.
 
 | Fichier | Étapes du cours | Jalon | Responsable | État |
 | --- | --- | --- | --- | --- |
-| `01_donnees.ipynb` (notebook Colab 1, parties 1-2, ni modèle ni score) | 1 Collecte, 2 Préparation | J1 · 25/11 | Rayen | ✅ Dans Colab, exécuté et partagé (lien du README) · ⏳ lien à déposer sur Moodle avant le 25/11, 23h59 |
+| `synora_projet_ml.ipynb`, parties 1-2 | 1 Collecte, 2 Préparation | J1 · 25/11 | Rayen | ✅ Exécutées dans Colab ; le notebook rendu au J1 est archivé dans `rendu_J1/` |
 | `synora_projet_ml.ipynb`, parties 3-4 | 3 Modèle, 4 Entraînement | J2 · fin S4 | Khaled | ✅ Exécutées dans Colab, textes 4.2, 4.3 bis et bilan J2 rédigés · ⏳ à relire par Khaled |
 | `synora_projet_ml.ipynb`, parties 5-6.1 | 5 Évaluation, export | J3 · fin S5 | Omar Idriss | ✅ Exécutées dans Colab, 5.3 bis, limites 5.4, lecture 6.2 et bilan J3 rédigés · ⏳ à relire par Omar Idriss |
 | `app/` (Streamlit) | 6 Déploiement | J3 · fin S5 | Khaled, avec Omar Idriss | ⏳ À déployer |
 | `README.md`, `JOURNAL_IA.md` | Tous | Tous | Tawfik | ✅ README complet (liens Colab, sections 3 et 4, rôles), critique du notebook Kaggle et bilan du journal · ⏳ lien de l'application |
 | `presentation/` (6 diapositives, PDF) | Tous | Rendu final | Omar Zouari | ✅ `synora_presentation.pdf` · ⏳ relire et répéter |
 
-**Deux notebooks.** `01_donnees.ipynb` est le notebook Colab 1 du jalon 1 : parties 1 et 2 seulement, car la consigne de S3 interdit modèle et score au J1. `synora_projet_ml.ipynb` contient tout le projet (parties 1 à 6) avec une cellule `CONFIG` unique (graine 42, 20 % de test, colonnes) et un découpage contrôlé par `EXPECTED_SPLIT` ; la partie 5 reprend automatiquement les réglages de la partie 4 (`BEST = best`). Son lien Colab sert pour J2 et J3.
+**Un seul notebook.** `synora_projet_ml.ipynb` contient tout le projet (parties 1 à 6) avec une cellule `CONFIG` unique (graine 42, 20 % de test, colonnes) et un découpage contrôlé par `EXPECTED_SPLIT` ; la partie 5 reprend automatiquement les réglages de la partie 4 (`BEST = best`). Son lien Colab sert pour J1, J2 et J3. Le notebook rendu au J1 (parties 1 et 2 seulement, car la consigne de S3 interdisait modèle et score) est archivé dans `rendu_J1/01_donnees.ipynb`.
 
 ---
 

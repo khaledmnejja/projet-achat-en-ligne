@@ -4,9 +4,9 @@
 
 | Livrable | Lien |
 | --- | --- |
-| Notebook Colab 1 · Données (J1, 25/11) | https://colab.research.google.com/drive/1WDsyqDsZlHAFGgUwjHlLMjeveNjFrwqY?usp=sharing (`notebooks/01_donnees.ipynb`, parties 1 et 2 seulement : ni modèle, ni score) |
-| Notebook Colab 2 · Modèles (J2, fin S4) | https://colab.research.google.com/drive/1yGfFigA1Fn-iRtjC4A7rh-N4dAzHyhJs?usp=sharing (notebook complet `synora_projet_ml.ipynb`, parties 3 et 4) |
-| Notebook Colab 3 · Évaluation (J3, fin S5) | https://colab.research.google.com/drive/1yGfFigA1Fn-iRtjC4A7rh-N4dAzHyhJs?usp=sharing (notebook complet `synora_projet_ml.ipynb`, parties 5 et 6) |
+| Notebook Colab 1 · Données (J1, 25/11) | https://colab.research.google.com/drive/1yGfFigA1Fn-iRtjC4A7rh-N4dAzHyhJs?usp=sharing (notebook unique `synora_projet_ml.ipynb`, parties 1 et 2) |
+| Notebook Colab 2 · Modèles (J2, fin S4) | https://colab.research.google.com/drive/1yGfFigA1Fn-iRtjC4A7rh-N4dAzHyhJs?usp=sharing (notebook unique `synora_projet_ml.ipynb`, parties 3 et 4) |
+| Notebook Colab 3 · Évaluation (J3, fin S5) | https://colab.research.google.com/drive/1yGfFigA1Fn-iRtjC4A7rh-N4dAzHyhJs?usp=sharing (notebook unique `synora_projet_ml.ipynb`, parties 5 et 6) |
 | Application Streamlit déployée | [lien Streamlit Community Cloud] |
 | Dépôt GitHub de l'application (`app.py`, `requirements.txt`, `model.joblib`) | https://github.com/khaledmnejja/projet-achat-en-ligne (dossier `app/`) |
 | Journal IA | `JOURNAL_IA.md` (rendu avec ce fichier) |
