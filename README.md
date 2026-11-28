@@ -7,7 +7,7 @@
 | Notebook Colab 1 · Données (J1, 25/11) | https://colab.research.google.com/drive/1yGfFigA1Fn-iRtjC4A7rh-N4dAzHyhJs?usp=sharing (notebook unique `synora_projet_ml.ipynb`, parties 1 et 2) |
 | Notebook Colab 2 · Modèles (J2, fin S4) | https://colab.research.google.com/drive/1yGfFigA1Fn-iRtjC4A7rh-N4dAzHyhJs?usp=sharing (notebook unique `synora_projet_ml.ipynb`, parties 3 et 4) |
 | Notebook Colab 3 · Évaluation (J3, fin S5) | https://colab.research.google.com/drive/1yGfFigA1Fn-iRtjC4A7rh-N4dAzHyhJs?usp=sharing (notebook unique `synora_projet_ml.ipynb`, parties 5 et 6) |
-| Application Streamlit déployée | [lien Streamlit Community Cloud] |
+| Application Streamlit déployée | https://synora-achat.streamlit.app (Streamlit Community Cloud, Python 3.12, fichier `app/app.py`) |
 | Dépôt GitHub de l'application (`app.py`, `requirements.txt`, `model.joblib`) | https://github.com/khaledmnejja/projet-achat-en-ligne (dossier `app/`) |
 | Journal IA | `JOURNAL_IA.md` (rendu avec ce fichier) |
 | Présentation (6 diapositives, PDF) | `presentation/synora_presentation.pdf` (source modifiable : `presentation/presentation.html`) |
@@ -73,9 +73,9 @@
 
 - [ ] Section 1 remplie et validée en S2
 - [x] Les 3 notebooks s'exécutent de haut en bas sans erreur, sorties enregistrées
-- [ ] Tous les liens s'ouvrent dans une fenêtre de navigation privée
-- [ ] L'application s'ouvre, refuse les saisies absurdes et rappelle les limites du modèle
+- [x] Tous les liens s'ouvrent dans une fenêtre de navigation privée
+- [x] L'application s'ouvre, refuse les saisies absurdes et rappelle les limites du modèle
 - [x] Même version de scikit-learn dans `requirements.txt` et dans Colab
 - [x] `JOURNAL_IA.md` : au moins une erreur de l'IA détaillée et la critique d'un notebook public
 - [x] Sources externes citées (notebooks Kaggle, dépôts GitHub, documentation)
-- [ ] Lignes en italique et crochets supprimés
+- [x] Lignes en italique et crochets supprimés
