@@ -71,7 +71,7 @@
 
 ## Avant le rendu
 
-- [ ] Section 1 remplie et validée en S2
+- [x] Section 1 remplie et validée en S2
 - [x] Les 3 notebooks s'exécutent de haut en bas sans erreur, sorties enregistrées
 - [x] Tous les liens s'ouvrent dans une fenêtre de navigation privée
 - [x] L'application s'ouvre, refuse les saisies absurdes et rappelle les limites du modèle
