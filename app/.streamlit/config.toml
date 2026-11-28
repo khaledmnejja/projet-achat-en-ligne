@@ -1,0 +1,11 @@
+# Thème Synora (identité « Convergence ») : base sombre, bleu signal, verre sur fond nuit.
+[theme]
+base = "dark"
+primaryColor = "#4d97ff"
+backgroundColor = "#121624"
+secondaryBackgroundColor = "#1a1f31"
+textColor = "#eef0f6"
+font = "sans serif"
+
+[browser]
+gatherUsageStats = false
